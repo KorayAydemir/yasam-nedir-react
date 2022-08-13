@@ -1,0 +1,153 @@
+.header h1 {
+  text-align: center;
+}
+
+.sidenav-button {
+  display: none;
+}
+
+.header .logo {
+  font-family: "Alegreya", serif;
+  color: #cf8d36;
+  font-weight: 300;
+  font-size: 6rem;
+  line-height: 180px;
+}
+
+@media only screen and (max-width: 760px) {
+  .header .logo {
+    font-size: 60px;
+    line-height: 60px;
+  }
+  .header h1 {
+    margin-top: 20px;
+  }
+
+  .sidenav-button {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    padding: 17px;
+    background-color: rgba(0, 0, 0, 0.685);
+    border-radius: 3px;
+    border-style: none;
+  }
+
+  .sidenav-button:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    border: 1px solid white;
+    width: 10px;
+    height: 12px;
+  }
+
+  .menu-container {
+    display: none;
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu ul {
+  display: flex;
+}
+
+.menu ul li {
+  color: #444444;
+  font-size: 1.4rem;
+  padding: 19px;
+}
+
+.menu ul .active:after {
+  position: relative;
+  display: block;
+  content: "";
+  top: auto;
+  background: #3e6caa;
+  opacity: 1;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.active span {
+  color: #3e6caa;
+}
+
+.menu ul .inactive:after {
+  position: relative;
+  display: block;
+  content: "";
+  top: auto;
+  background: #3e6caa;
+  opacity: 0;
+  height: 4px;
+  width: 100%;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu ul .inactive:hover:after {
+  opacity: 1;
+}
+
+.menu ul .inactive:hover span {
+  color: #3e6caa;
+  color: #9f0000; 
+}
+
+.menu ul a:not(:last-child) {
+  border-right: #dfdfdf93 1px solid;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-bottom {
+  display: flex;
+  align-items: center;
+  background-color: rgba(247, 247, 247, 1);
+  padding: 30px 0;
+}
+
+.header-bottom span {
+  font-family: "Alegreya", serif, Tahoma, sans-serif;
+  font-size: 1.8rem;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: #8e8e8e;
+  position: relative;
+  float: left;
+}
+
+@media only screen and (max-width: 760px) {
+  .site-container {
+    max-width: unset;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .menu ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+  .header-bottom {
+    padding: 15px 0;
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  .header-bottom span {
+    margin-left: 22px;
+  }
+}
