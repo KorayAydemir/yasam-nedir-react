@@ -12,25 +12,20 @@ function useGetData(dataa) {
   //
 }
 export default function resolveProductionUrl(document) {
-  const query = `*[_id == "${document._id}"]{'birim_no': related_birim-> birim_no}`;
-  async function fetch() {
-    window.myData = await sanityClient.fetch(query);
-  }
-  fetch();
-  if (window.myData && window.myData[0]) {
-    if (document._type === "Bolum") {
-      return `https://yasamnedir.web.app/yasambilim/birim-${window.myData[0].birim_no}/bolum-${document.bolum_no}`;
-    }
-  }
-
-  // const theData = useGetData();
-  // let dat = ";";
-  // console.log(useGetData(dat));
+  //  const query = `*[_id == "${document._id}"]{'birim_no': related_birim-> birim_no}`;
+  //  async function fetch() {
+  //    window.myData = await sanityClient.fetch(query);
+  //  }
+  //  fetch();
+  //  if (window.myData && window.myData[0]) {
+  //    if (document._type === "Bolum") {
+  //      return `https://yasamnedir.web.app/yasambilim/birim-${window.myData[0].birim_no}/bolum-${document.bolum_no}`;
+  //    }
+  //  }
   //
-
-  if (document._type === "Birim") {
-    return `https://yasamnedir.web.app/yasambilim/${document._type.toLowerCase()}-${
-      document.birim_no
-    }`;
-  }
+  //  if (document._type === "Birim") {
+  //    return `https://yasamnedir.web.app/yasambilim/${document._type.toLowerCase()}-${
+  //      document.birim_no
+  //    }`;
+  //  }
 }
