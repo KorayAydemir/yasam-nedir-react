@@ -11,7 +11,7 @@ const AccordionItem = (props) => {
   function urlFor(source) {
     return builder.image(source);
   }
-
+  console.log(props.value);
   const title = props.title;
   const serializer = {
     types: {
@@ -36,16 +36,22 @@ const AccordionItem = (props) => {
           </a>
         </div>
       ),
+      span: (props) => <span>{props}</span>,
     },
     marks: {
       em: ({ children }) => (
         <i className="text-gray-600 font-semibold">{children}</i>
       ),
+      // TODO if any mark has props.value.pixels, then set fontSize as that. Else don't set fontsize.
       fontSize: (props) => (
         <span style={{ fontSize: `${props.value.pixels}px` }}>
           {props.children}
         </span>
       ),
+
+      indented: (props) => {
+        return <p style={{ marginLeft: "2em" }}>{props.children}</p>;
+      },
     },
   };
 
