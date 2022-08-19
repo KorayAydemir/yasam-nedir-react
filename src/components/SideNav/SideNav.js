@@ -1,6 +1,5 @@
 import classes from "./SideNav.module.css";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 const Backdrop = (props) => {
   let displayState = props.width === "0%" ? "none" : "unset";
@@ -15,7 +14,7 @@ const Backdrop = (props) => {
   );
 };
 const SideNav = (props) => {
-  const activeClassName = classes.active;
+              const activeClassName = classes.active;
   const inactiveClassName = classes.inactive;
   return (
     <div>
