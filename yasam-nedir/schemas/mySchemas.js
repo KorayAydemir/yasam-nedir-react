@@ -39,6 +39,22 @@ export const mySchemas = [
     type: "document",
     title: "Bölüm",
     name: "Bolum",
+    preview: {
+      select: {
+        title: "title",
+        subtitle: "related_birim.birim_no",
+        num: "bolum_no",
+        media: "birim_icon",
+      },
+      prepare(selection) {
+        const { title, subtitle, num, media } = selection;
+        return {
+          title: `${num}- ${title}`,
+          subtitle: `Birim: ${subtitle}`,
+          media: media,
+        };
+      },
+    },
     fields: [
       { type: "string", name: "title", title: "Bölümün Adı" },
       {
@@ -71,6 +87,22 @@ export const mySchemas = [
     type: "document",
     title: "Alt Bölüm",
     name: "alt_bolum",
+    preview: {
+      select: {
+        title: "title",
+        subtitle: "related_bolum.bolum_no",
+        num: "alt_bolum_no",
+        media: "related_bolum.birim_icon",
+      },
+      prepare(selection) {
+        const { title, subtitle, num, media } = selection;
+        return {
+          title: `${num}- ${title}`,
+          subtitle: `Bölüm: ${subtitle}`,
+          media: media,
+        };
+      },
+    },
     fields: [
       { type: "string", name: "title", title: "Alt Bölümün Başlığı" },
       {
@@ -128,6 +160,15 @@ export const mySchemas = [
                 { title: "Underline", value: "underline" },
                 { title: "Code", value: "code" },
                 { title: "Strike", value: "strike-through" },
+                {
+                  title: "Indented",
+                  value: "indented",
+                  blockEditor: {
+                    render: ({ children }) => (
+                      <p style={{ marginLeft: "2em" }}>{children}</p>
+                    ),
+                  },
+                },
               ],
             },
           },
