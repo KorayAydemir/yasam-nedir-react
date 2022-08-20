@@ -4,6 +4,7 @@
   line-height: 2rem;
   margin: 0;
 }
+
 .wrapper {
   margin-top: 20px;
   font-size: 25px;
@@ -12,7 +13,6 @@
   justify-content: space-between;
   line-height: 2.5rem;
 }
-
 
 .inactive {
   max-height: 0;
@@ -39,7 +39,7 @@
   max-width: 100%;
 }
 
-.title{
+.title {
   font-weight: bold;
   border-bottom: 2px solid black;
   cursor: pointer;
