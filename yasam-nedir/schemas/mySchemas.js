@@ -11,17 +11,31 @@ const fontSizeRender = (props) => (
   <span style={{ fontSize: `${props.pixels}px` }}>{props.children}</span>
 );
 
-const TitleStyle = (props) => (
+/*const TitleStyle = (props) => (
   <span style={{ fontFamily: "Garamond", fontSize: "2em" }}>
     {props.children}
   </span>
-);
+);*/
 
 export const mySchemas = [
   {
     type: "document",
     title: "Birim",
     name: "Birim",
+    preview: {
+      select: {
+        title: "title",
+        num: "birim_no",
+        media: "birim_icon",
+      },
+      prepare(selection) {
+        const { title, num, media } = selection;
+        return {
+          title: `${num}- ${title}`,
+          media: media,
+        };
+      },
+    },
     fields: [
       { type: "string", name: "title", title: "Birimin Adı" },
 

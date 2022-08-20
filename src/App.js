@@ -11,6 +11,7 @@ import Denemeler from "./pages/denemeler/denemeler";
 import Chapters from "./components/chapters/Chapters";
 import Header from "./components/header";
 import Sections from "./pages/sections/sections";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration

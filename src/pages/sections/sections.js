@@ -100,7 +100,7 @@ const Sections = () => {
       k = k + 1;
     }
   }
-  //  console.log(altBolum);
+  console.log(altBolum);
   const content =
     altBolum &&
     altBolum
@@ -121,7 +121,11 @@ const Sections = () => {
         ></AccordionItem>
       ));
 
-  return <div className="site-container">{content}</div>;
+  return (
+    <div className="site-container" style={{ marginTop: " 30px" }}>
+      {console.log(content)} {content}
+    </div>
+  );
 };
 
 export default Sections;

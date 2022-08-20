@@ -2,6 +2,10 @@
   display: none !important;
 }
 
+p {
+  margin-bottom: 10px;
+}
+
 .tooltip {
   position: relative !important; /* making the .tooltip span a container for the tooltip text */
   border-bottom: 1px dashed rgb(0, 0, 0) !important;

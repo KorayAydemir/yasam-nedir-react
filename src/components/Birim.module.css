@@ -35,7 +35,7 @@
   line-height: 25px;
   font-weight: 600;
   letter-spacing: 0px;
-  color: #161922;
+  color: var(--card-color);
   text-align: center;
 }
 

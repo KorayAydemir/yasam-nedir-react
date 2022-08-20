@@ -59,7 +59,7 @@
 }
 
 .menu ul li {
-  color: #444444;
+  color: var(--header-menu-span);
   font-size: 1.4rem;
   padding: 19px;
 }
@@ -100,7 +100,7 @@
 
 .menu ul .inactive:hover span {
   color: #3e6caa;
-  color: #9f0000; 
+  color: #9f0000;
 }
 
 .menu ul a:not(:last-child) {
@@ -115,7 +115,7 @@
 .header-bottom {
   display: flex;
   align-items: center;
-  background-color: rgba(247, 247, 247, 1);
+  background-color: var(--header-bottom-background);
   padding: 30px 0;
 }
 

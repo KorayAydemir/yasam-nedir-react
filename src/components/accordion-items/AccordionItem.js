@@ -14,6 +14,7 @@ const AccordionItem = (props) => {
   //  console.log(props.value);
   const title = props.title;
   const serializer = {
+    block: (props) => <p style={{ marginBottom: "20px" }}>{props.children}</p>,
     types: {
       image: (props) => (
         <div>
@@ -55,6 +56,7 @@ const AccordionItem = (props) => {
       },
     },
   };
+  console.log(props.value);
 
   return (
     <div className={classes.wrapper}>
@@ -74,7 +76,10 @@ const AccordionItem = (props) => {
             : `${classes.inactive} ${classes.unset}`
         }
       >
-        <div className="new" style={{ marginTop: "10px" }}></div>
+        <div
+          className="new"
+          style={{ marginTop: "10px", fontFamily: "Literata" }}
+        ></div>
 
         <div className="texts">
           <PortableText value={props.value} components={serializer} />
