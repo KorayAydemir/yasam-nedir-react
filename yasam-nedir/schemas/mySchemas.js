@@ -11,6 +11,12 @@ const fontSizeRender = (props) => (
   <span style={{ fontSize: `${props.pixels}px` }}>{props.children}</span>
 );
 
+const TitleStyle = (props) => (
+  <span style={{ fontFamily: "Garamond", fontSize: "2em" }}>
+    {props.children}
+  </span>
+);
+
 export const mySchemas = [
   {
     type: "document",
@@ -126,6 +132,13 @@ export const mySchemas = [
         of: [
           {
             type: "block",
+            styles: [
+              { title: "Normal", value: "normal" },
+              { title: "H1", value: "h1" },
+              { title: "H2", value: "h2" },
+              { title: "H3", value: "h3" },
+              { title: "Quote", value: "blockquote" },
+            ],
             marks: {
               annotations: [
                 {
@@ -167,6 +180,7 @@ export const mySchemas = [
                     render: ({ children }) => (
                       <p style={{ marginLeft: "2em" }}>{children}</p>
                     ),
+                    icon: () => "|->",
                   },
                 },
               ],
