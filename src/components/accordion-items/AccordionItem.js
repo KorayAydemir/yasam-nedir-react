@@ -36,18 +36,19 @@ const AccordionItem = (props) => {
           </a>
         </div>
       ),
-      span: (props) => <span>{props}</span>,
+      span: (props) => <span>{props.children}</span>,
     },
     marks: {
       em: ({ children }) => (
         <i className="text-gray-600 font-semibold">{children}</i>
       ),
       // TODO if any mark has props.value.pixels, then set fontSize as that. Else don't set fontsize.
-      fontSize: (props) => (
-        <span style={{ fontSize: `${props.value.pixels}px` }}>
-          {props.children}
-        </span>
-      ),
+      fontSize: (props) => {
+        const content = ` ${props.children} `;
+        return (
+          <span style={{ fontSize: `${props.value.pixels}px` }}>{content}</span>
+        );
+      },
 
       indented: (props) => {
         return <p style={{ marginLeft: "2em" }}>{props.children}</p>;

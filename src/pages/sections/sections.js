@@ -92,7 +92,7 @@ const Sections = () => {
       wordData.forEach((word) => {
         temp = temp.replaceAll(
           ` ${word[0]} `,
-          ` <span class="tooltip" data-text='${word[1]}'>${word[0]}</span> `
+          ` <span class="tooltip" style="font-size: inherit" data-text='${word[1]}'>${word[0]}</span> `
         );
       });
       document.getElementsByClassName("new")[k].innerHTML = temp;
@@ -100,7 +100,7 @@ const Sections = () => {
       k = k + 1;
     }
   }
-  console.log(altBolum);
+  //  console.log(altBolum);
   const content =
     altBolum &&
     altBolum
