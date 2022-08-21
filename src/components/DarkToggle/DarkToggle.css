@@ -1,0 +1,95 @@
+:root {
+  --font-color: #333;
+  --link-color: cornflowerblue;
+  --header-bottom-background: rgba(247, 247, 247, 1);
+  --header-menu-span: #444;
+  --font-color-title: #444;
+  --card-color: #161922;
+}
+
+/* 2 */
+[data-theme="dark"] {
+  --font-color: #e8e6e3;
+  --background-color: #181a1b;
+  --link-color: peachpuff;
+  --font-color-title: #d8d4cf !important;
+  --header-bottom-background: rgb(29, 31, 32);
+  --header-menu-span: rgb(189, 183, 175);
+  --card-color: rgb(214, 211, 205);
+}
+
+/* 3 */
+body {
+  background-color: var(--background-color);
+  color: var(--font-color) !important;
+}
+
+a {
+  color: var(--link-color);
+}
+
+/* Custom Dark Mode Toggle Element */
+
+.toggle-theme-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  margin-top: 20px;
+  margin-right: 15px;
+  right: 0;
+}
+
+.toggle-theme-wrapper span {
+  font-size: 18px;
+}
+
+.toggle-theme {
+  position: relative;
+  display: inline-block;
+  height: 24px;
+  width: 50px;
+}
+
+.toggle-theme input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  position: absolute;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 16px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 16px;
+}
+
+input:checked + div:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider {
+  background-color: cornflowerblue;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

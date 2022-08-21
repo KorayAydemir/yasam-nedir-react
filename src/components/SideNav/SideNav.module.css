@@ -8,7 +8,6 @@
   transition: 0.5s ease;
   overflow-x: hidden;
   padding-top: 10px;
-
   display: flex;
   flex-direction: column;
   font-family: "Arial", Arial, Tahoma, sans-serif;
@@ -66,4 +65,19 @@
   z-index: 1;
   display: none;
   transition: 0.5s ease;
+}
+
+.dark-toggle > div {
+  left: 0;
+  margin-left: 15px;
+  margin-right: 0;
+  margin-top: 7px;
+}
+
+.dark-toggle > div > label > input:checked + div:before {
+  transform: translateX(26px);
+}
+
+.dark-toggle > div > label > input:checked + div {
+  background-color: cornflowerblue;
 }

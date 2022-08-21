@@ -1,5 +1,6 @@
 import classes from "./SideNav.module.css";
 import { NavLink } from "react-router-dom";
+import DarkToggle from "../DarkToggle/DarkToggle";
 
 const Backdrop = (props) => {
   let displayState = props.width === "0%" ? "none" : "unset";
@@ -14,7 +15,7 @@ const Backdrop = (props) => {
   );
 };
 const SideNav = (props) => {
-              const activeClassName = classes.active;
+  const activeClassName = classes.active;
   const inactiveClassName = classes.inactive;
   return (
     <div>
@@ -25,6 +26,10 @@ const SideNav = (props) => {
         }}
       />
       <div className={classes.sidenav} style={{ width: props.width }}>
+        <div className={classes["dark-toggle"]}>
+          <DarkToggle place="side-nav" />
+        </div>
+
         <div className={classes.buttonw}>
           <button className={classes.button} onClick={props.closeNav}></button>
         </div>
