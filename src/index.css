@@ -8,8 +8,8 @@ p {
 
 .tooltip {
   position: relative !important; /* making the .tooltip span a container for the tooltip text */
-  border-bottom: 1px dashed rgb(0, 0, 0) !important;
-  font-weight: normal !important;
+  border-bottom: 1px dashed var(--tooltip) !important;
+  /*  font-weight: normal !important;*/
 }
 
 .tooltip:before {

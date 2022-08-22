@@ -5,6 +5,13 @@
   --header-menu-span: #444;
   --font-color-title: #444;
   --card-color: #161922;
+  --borders: rgba(0, 0, 0, 0.08);
+  --header-menu-borders: #dfdfdf93;
+  --accordion-border-bottom: black;
+  --tooltip: black;
+  --scrollbar-thumb: #c1c1c1;
+  --scrollbar-thumb-hover: #a8a8a8;
+  --scrollbar-background: #f1f1f1;
 }
 
 /* 2 */
@@ -12,10 +19,17 @@
   --font-color: #e8e6e3;
   --background-color: #181a1b;
   --link-color: peachpuff;
-  --font-color-title: #d8d4cf !important;
+  --font-color-title: rgb(189, 183, 175) !important;
   --header-bottom-background: rgb(29, 31, 32);
   --header-menu-span: rgb(189, 183, 175);
   --card-color: rgb(214, 211, 205);
+  --borders: rgba(140, 130, 115, 0.08);
+  --header-menu-borders: rgba(57, 62, 64, 0.58);
+  --accordion-border-bottom: rgb(140, 130, 115);
+  --tooltip: rgb(140, 130, 115);
+  --scrollbar-thumb: #454a4d;
+  --scrollbar-thumb-hover: #575e62;
+  --scrollbar-background: #202324;
 }
 
 /* 3 */

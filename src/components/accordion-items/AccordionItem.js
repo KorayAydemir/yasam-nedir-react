@@ -14,7 +14,9 @@ const AccordionItem = (props) => {
   //  console.log(props.value);
   const title = props.title;
   const serializer = {
-    block: (props) => <p style={{ marginBottom: "20px" }}>{props.children}</p>,
+    block: (props) => (
+      <p style={{ marginBottom: "20px" }}> {props.children} </p>
+    ),
     types: {
       image: (props) => (
         <div>
@@ -40,15 +42,80 @@ const AccordionItem = (props) => {
       span: (props) => <span>{props.children}</span>,
     },
     marks: {
-      em: ({ children }) => (
-        <i className="text-gray-600 font-semibold">{children}</i>
-      ),
+      em: ({ children }) => <i> {children} </i>,
+      strong: (props) => <strong> {props.children} </strong>,
+      underline: (props) => <u> {props.children} </u>,
       // TODO if any mark has props.value.pixels, then set fontSize as that. Else don't set fontsize.
-      fontSize: (props) => {
-        const content = ` ${props.children} `;
-        return (
-          <span style={{ fontSize: `${props.value.pixels}px` }}>{content}</span>
-        );
+      fontStyles: (props) => {
+        let decorator = "";
+        if (props.children[0].props) {
+          decorator = props.children[0].props.markType;
+        }
+        const content = ` ${props.text} `;
+        console.log(props);
+
+        if (decorator === "strong") {
+          return (
+            <strong
+              style={{
+                fontSize: `${props.value.pixels}px`,
+                fontFamily: `${props.value.fontFamily}`,
+              }}
+            >
+              {content}
+            </strong>
+          );
+        }
+        if (decorator === "em") {
+          return (
+            <em
+              style={{
+                fontSize: `${props.value.pixels}px`,
+                fontFamily: `${props.value.fontFamily}`,
+              }}
+            >
+              {content}
+            </em>
+          );
+        }
+        if (decorator === "underline") {
+          return (
+            <u
+              style={{
+                fontSize: `${props.value.pixels}px`,
+                fontFamily: `${props.value.fontFamily}`,
+              }}
+            >
+              {content}
+            </u>
+          );
+        }
+
+        if (decorator === "strike-through") {
+          return (
+            <s
+              style={{
+                fontSize: `${props.value.pixels}px`,
+                fontFamily: `${props.value.fontFamily}`,
+              }}
+            >
+              {content}
+            </s>
+          );
+        } else {
+          return (
+            <span
+              style={{
+                fontSize: `${props.value.pixels}px`,
+                fontFamily: props.value.fontFamily
+                  ? `${props.value.fontFamily}`
+                  : "Literata",
+              }}
+            >
+              {content}
+            </span>
+          );
+        }
       },
 
       indented: (props) => {
@@ -56,7 +123,6 @@ const AccordionItem = (props) => {
       },
     },
   };
-  console.log(props.value);
 
   return (
     <div className={classes.wrapper}>

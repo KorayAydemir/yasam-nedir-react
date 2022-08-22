@@ -100,11 +100,10 @@
 
 .menu ul .inactive:hover span {
   color: #3e6caa;
-  color: #9f0000;
 }
 
 .menu ul a:not(:last-child) {
-  border-right: #dfdfdf93 1px solid;
+  border-right: var(--header-menu-borders) 1px solid;
 }
 
 .header-container {

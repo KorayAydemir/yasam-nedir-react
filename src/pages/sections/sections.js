@@ -41,45 +41,6 @@ const Sections = () => {
     console.log("YO", e);
   }
 
-  /*
-  if (altBolum) {
-    if (altBolum[0]) {
-      for (const text of altBolum[0].content[0].children) {
-        text.text = text.text.replace(
-          new RegExp("Yeryüzü", "gm"),
-          "<span onmouseover=\"wordsAssigned['" +
-            "Yeryüzü" +
-            "']()\">" +
-            "Yeryüzü" +
-            "</span>"
-        );
-      } //getting the rawtext
-    }
-  }*/
-
-  /*
-  if (altBolum) {
-    console.log(
-      altBolum.map((a) => {
-        return a.content;
-      })
-    );
-  }
-*/
-
-  /*
-  altBolum && altBolum[0] && console.log(toPlainText(altBolum[0].content));
-  if (altBolum) {
-    const MetaDescription = (altBolum) => console.log(altBolum);
-    MetaDescription();
-  } get raw text*/
-
-  /* const [baseHtml, setBaseHtml] = useState();
-  useEffect(() => {
-    for (const key of document.getElementsByClassName("texts")) {
-      setBaseHtml(key.innerHTML);
-    }
-  }, []); what this even good for ? recently removed*/
   for (const key of document.getElementsByClassName("texts")) {
     key.hidden = true;
   }
@@ -100,11 +61,11 @@ const Sections = () => {
       k = k + 1;
     }
   }
-  console.log(altBolum);
+  //console.log(altBolum);
   const content =
     altBolum &&
     altBolum
-      .filter((a) => a.birim_no === parseInt(currentSection))
+      .filter((a) => a.bolum_no === parseInt(currentSection))
       .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)
       .map((a) => (
         <AccordionItem
@@ -123,7 +84,7 @@ const Sections = () => {
 
   return (
     <div className="site-container" style={{ marginTop: " 30px" }}>
-      {console.log(content)} {content}
+      {content}
     </div>
   );
 };

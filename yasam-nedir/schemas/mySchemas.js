@@ -8,7 +8,18 @@ const fontSizeIcon = () => (
 );
 
 const fontSizeRender = (props) => (
-  <span style={{ fontSize: `${props.pixels}px` }}>{props.children}</span>
+  <span
+    style={{
+      fontSize: `${props.pixels}px`,
+      fontFamily: props.fontFamily ? `${props.fontFamily}` : "Segoe UI",
+    }}
+  >
+    {props.children}
+  </span>
+);
+
+const fontFamilyRender = (props) => (
+  <span style={{ fontFamily: "" }}>{props.children}</span>
 );
 
 /*const TitleStyle = (props) => (
@@ -168,15 +179,63 @@ export const mySchemas = [
                   ],
                 },
                 {
-                  name: "fontSize",
+                  name: "fontStyles",
                   type: "object",
-                  title: "Font Size",
+                  title: "Yazı Stilleri",
                   blockEditor: { icon: fontSizeIcon, render: fontSizeRender },
+                  options: {
+                    collapsible: true, // Makes the whole fieldset collapsible
+                    collapsed: true, // Defines if the fieldset should be collapsed by default or not
+                    columns: 1, // Defines a grid for the fields and how many columns it should have
+                    editModal: "popover",
+                  },
                   fields: [
                     {
                       name: "pixels",
                       type: "number",
-                      title: "pixels",
+                      title: "Pixels",
+                    },
+                    {
+                      name: "fontFamily",
+                      type: "string",
+                      title: "Yazı Tipi",
+                      options: {
+                        list: [
+                          { title: "Literata", value: "Literata" },
+                          {
+                            title: "Times New Roman",
+                            value: "Times New Roman",
+                          },
+                          {
+                            title: "Verdana",
+                            value: "Verdana",
+                          },
+                          {
+                            title: "Helvetica",
+                            value: "Tahoma",
+                          },
+                          {
+                            title: "Trebuchet",
+                            value: "Trebuchet",
+                          },
+                          {
+                            title: "Georgia",
+                            value: "Georgia",
+                          },
+                          {
+                            title: "Garamond",
+                            value: "Garamond",
+                          },
+                          {
+                            title: "Courier New",
+                            value: "Courier New",
+                          },
+                          {
+                            title: "Brush Script MT",
+                            value: "Brush Script MT",
+                          },
+                        ],
+                      },
                     },
                   ],
                 },
