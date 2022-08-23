@@ -20,19 +20,28 @@ const Chapters = (props) => {
   }
 
   useEffect(() => {
+    let subscribed = true;
+
     sanityClient
       .fetch(
         `*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title, "birim_no": related_birim-> birim_no, birim_icon}` /*   `*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title}`*/
       )
-      .then((data) =>
-        setBirimler(
-          data
-            .sort((a, b) => a.bolum_no - b.bolum_no)
-            .filter((a) => a.birim_no === parseInt(currentChapter))
-        )
-      )
+      .then((data) => {
+        if (subscribed) {
+          setBirimler(
+            data
+              .sort((a, b) => a.bolum_no - b.bolum_no)
+              .filter((a) => a.birim_no === parseInt(currentChapter))
+          );
+          console.log("bolumler");
+        }
+      })
       .catch(console.error);
-  }, []);
+    console.log("bolumler out");
+    return () => {
+      subscribed = false;
+    };
+  }, [currentChapter]);
   if (bolumler) {
     setTitle(`BİRİM ${bolumler[0].birim_no}: ${bolumler[0].birim_title}`);
   }
@@ -47,7 +56,6 @@ const Chapters = (props) => {
       </Birim>
     );
   });*/
-  console.log(bolumler);
   const content =
     bolumler &&
     bolumler.map((bolum) => {

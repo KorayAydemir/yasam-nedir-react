@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AccordionItem from "../../components/accordion-items/AccordionItem";
 import { useOutletContext, useParams } from "react-router-dom";
-import { toPlainText } from "@portabletext/react";
 
 import sanityClient from "../../Client";
 
@@ -15,20 +14,28 @@ const Sections = () => {
   const [wordData, setWordData] = useState([]);
 
   useEffect(() => {
+    let subscribed = true;
     sanityClient
       .fetch(
         `*[_type in ["tooltips", "alt_bolum"]]{kelimeler, alt_bolum_no, title, content, "bolum_title": related_bolum->title, "bolum_no": related_bolum->bolum_no, "birim_no": related_bolum->related_birim->birim_no, "birim_title": related_bolum->related_birim->title}` /*   `*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title}`*/
       )
       .then((data) => {
-        setAltBolum(data);
-        let abc = data.filter((a) => a.kelimeler)[0].kelimeler.split("\n");
-        abc.pop();
-        const newWordData = abc.map((word) => {
-          return (word = word.split("="));
-        });
-        setWordData(newWordData);
+        if (subscribed) {
+          console.log("accordion");
+          setAltBolum(data);
+          let abc = data.filter((a) => a.kelimeler)[0].kelimeler.split("\n");
+          abc.pop();
+          const newWordData = abc.map((word) => {
+            return (word = word.split("="));
+          });
+          setWordData(newWordData);
+        }
       })
       .catch(console.error);
+    console.log("accordion out");
+    return () => {
+      subscribed = false;
+    };
   }, []);
   //altBolum && console.log(altBolum);
   // wordData && console.log(wordData);
