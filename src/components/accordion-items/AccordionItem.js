@@ -90,7 +90,6 @@ const AccordionItem = (props) => {
             </u>
           );
         }
-
         if (decorator === "strike-through") {
           return (
             <s

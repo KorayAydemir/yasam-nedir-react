@@ -11,13 +11,20 @@ const Birimler = () => {
 
   const [birimler, setBirimler] = useState(null);
   useEffect(() => {
+    let subscribed = false;
     sanityClient
       .fetch(`*[_type == "Birim"]`)
-      .then((data) => setBirimler(data.sort((a, b) => a.birim_no - b.birim_no)))
+      .then((data) => {
+        if (subscribed) {
+          setBirimler(data.sort((a, b) => a.birim_no - b.birim_no));
+          console.log("a");
+        }
+      })
       .catch(console.error);
+    return () => {
+      subscribed = true;
+    };
   }, []);
-
-  birimler && console.log(birimler);
 
   function urlFor(source) {
     return builder.image(source);
