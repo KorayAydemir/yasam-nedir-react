@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import "./globals/global.css";
 import Home from "./pages/home/home";
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
 import Yasambilim from "./pages/yasambilim/yasambilim";
 import Evrim from "./pages/evrim/evrim";
 import Denemeler from "./pages/denemeler/denemeler";
@@ -16,22 +15,11 @@ import Sections from "./pages/sections/sections";
 // https://firebase.google.com/docs/web/setup#available-libraries
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDEDI_BSYpNZ_nDmgJxHG-yJrRTYj8vvxw",
-  authDomain: "yasamnedir.firebaseapp.com",
-  projectId: "yasamnedir",
-  storageBucket: "yasamnedir.appspot.com",
-  messagingSenderId: "979608162508",
-  appId: "1:979608162508:web:2f1047b443fadfe5f6f269",
-  measurementId: "G-1PD1BLV6B4",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 function App() {
   return (
     <div>
       <div className="site-container"></div>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Header />}>

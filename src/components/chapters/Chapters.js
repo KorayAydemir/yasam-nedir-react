@@ -63,7 +63,7 @@ const Chapters = (props) => {
         <Birim
           key={bolum.bolum_no}
           number={bolum.bolum_no}
-          icon={urlFor(bolum.birim_icon).url()}
+          icon={urlFor(bolum.birim_icon).auto("format").url()}
         >
           {bolum.title}
         </Birim>

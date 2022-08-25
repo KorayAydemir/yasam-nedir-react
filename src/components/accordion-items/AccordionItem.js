@@ -26,12 +26,14 @@ const AccordionItem = (props) => {
             rel="noopener noreferrer"
           >
             <img
+              loading="lazy"
               //src={props.img.filter((e) => e !== undefined)}
               src={urlFor(props.value.asset._ref)
                 .fit(props.value.fit || "clip")
                 .ignoreImageParams()
                 .width(props.value.width)
                 .height(props.value.height)
+                .auto("format")
                 .url()}
               alt={"asset"}
               className={classes.image}

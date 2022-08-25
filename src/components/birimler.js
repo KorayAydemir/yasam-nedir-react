@@ -43,7 +43,7 @@ const Birimler = () => {
               type="birim"
               key={birim.birim_no}
               number={birim.birim_no}
-              icon={urlFor(birim.birim_icon).url()}
+              icon={urlFor(birim.birim_icon).auto("format").url()}
             >
               {birim.title}
             </Birim>
