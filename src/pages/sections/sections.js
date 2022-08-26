@@ -68,7 +68,6 @@ const Sections = () => {
       k = k + 1;
     }
   }
-  //console.log(altBolum);
   const content =
     altBolum &&
     altBolum
