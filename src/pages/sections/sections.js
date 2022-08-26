@@ -15,9 +15,10 @@ const Sections = () => {
 
   useEffect(() => {
     let subscribed = true;
+    /* `*[_type in ["tooltips", "Bolum","alt_bolum" ]]{kelimeler, bolum_no, alt_bolum_no, title, content, "bolum_title": related_bolum->title, "bolum_no": related_bolum->bolum_no, "birim_no": related_bolum->related_birim->birim_no, "birim_title": related_bolum->related_birim->title}` */
     sanityClient
       .fetch(
-        `*[_type in ["tooltips", "alt_bolum"]]{kelimeler, alt_bolum_no, title, content, "bolum_title": related_bolum->title, "bolum_no": related_bolum->bolum_no, "birim_no": related_bolum->related_birim->birim_no, "birim_title": related_bolum->related_birim->title}` /*   `*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title}`*/
+        `*[_type in ["tooltips",  "Bolum"]]{kelimeler, alt_bolumler, bolum_no, "bolum_title": title, "birim_no": related_birim->birim_no, "birim_title": related_birim->title}`
       )
       .then((data) => {
         if (subscribed) {
@@ -37,7 +38,7 @@ const Sections = () => {
       subscribed = false;
     };
   }, []);
-  //altBolum && console.log(altBolum);
+  //  altBolum && console.log(altBolum);
   // wordData && console.log(wordData);
   // tesjdt
   try {
@@ -68,12 +69,17 @@ const Sections = () => {
       k = k + 1;
     }
   }
+  /*  altBolum &&
+    console.log(
+      altBolum.filter((a) => a.bolum_no === parseInt(currentSection))[0]
+        .alt_bolumler
+    );*/
   const content =
-    altBolum &&
+    altBolum[0] &&
     altBolum
       .filter((a) => a.bolum_no === parseInt(currentSection))
-      .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)
-      .map((a) => (
+      .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
+      .alt_bolumler.map((a) => (
         <AccordionItem
           title={a.title}
           key={a.alt_bolum_no}
@@ -83,8 +89,8 @@ const Sections = () => {
           img={a.content.filter((c) => {
             return c.asset && c.asset;
           })} /*a.content.map((c) => {
-            return c.asset && urlFor(c.asset).url();
-          })*/
+             return c.asset && urlFor(c.asset).url();
+           })*/
         ></AccordionItem>
       ));
 
