@@ -18,16 +18,6 @@ const fontSizeRender = (props) => (
   </span>
 );
 
-const fontFamilyRender = (props) => (
-  <span style={{ fontFamily: "" }}>{props.children}</span>
-);
-
-/*const TitleStyle = (props) => (
-  <span style={{ fontFamily: "Garamond", fontSize: "2em" }}>
-    {props.children}
-  </span>
-);*/
-
 export const mySchemas = [
   {
     type: "document",
@@ -128,13 +118,13 @@ export const mySchemas = [
       select: {
         title: "title",
         num: "alt_bolum_no",
-        media: "related_bolum.birim_icon",
+        media: "media",
       },
       prepare(selection) {
-        const { title, num, media } = selection;
+        const { title, num } = selection;
         return {
-          title: `${num}- ${title}`,
-          media: media,
+          title: `${title}`,
+          media: <span>{num}</span>,
         };
       },
     },
