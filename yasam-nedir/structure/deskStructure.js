@@ -11,4 +11,7 @@ export default () =>
       S.listItem()
         .title("Tooltips")
         .child(S.document().schemaType("tooltips").documentId("tooltips")),
+      S.listItem()
+        .title("Genel Ayarlar")
+        .child(S.document().schemaType("settings").documentId("settings")),
     ]);

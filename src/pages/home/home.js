@@ -1,44 +1,136 @@
 import bg from "./images/Yasamnedir2.jpg";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./home.module.css";
 import Button from "../../globals/button/button";
 import octopus from "./images/ahto.png";
+import sanityClient from "../../Client"
+import { PortableText } from "@portabletext/react";
 
 const Home = () => {
-  return (
-    <div className={classes["bg-container"]}>
-      <img className={classes.bg} src={bg} alt="background" />
-      <div className={classes["octopus-wrapper"]}>
-        <img className={classes.octopus} src={octopus} alt="octopus" />
-      </div>
-      <div className={classes["text-container"]}>
-        <p>
-          Hiç kuşkusuz yaşam, ortaya çıkar çıkmaz kendisinin farkındaydı; ancak
-          ne olduğunu bilmiyordu… madde değildi, ruh da değildi, ikisinin
-          arasında bir şeydi: Yağmur sonrası göğü saran gökkuşağı, ya da
-          yangında dans eden alev gibi… Ruhsuz maddenin utanmazca kendisini
-          sezmeye başlamasıydı o. Kendisinin önüne geçemediği bir oluşumdu.
-          Evrenin donuk iffetinde gizli ve ateşli bir karışımdı. Soğurmayla ve
-          salgılamayla işleyen çalınmış ve şehvetli bir kirlilikti.
-        </p>
-        <p>
-          Yaşam nedir? Kimse bilmez; ancak yaşamın ne olduğunu sorgulamadığımız
-          her an boşa geçirilmiştir!
-        </p>
-        <div className={classes.buttons}>
-          <Link to="/yasambilim">
-            <Button color="#6ab165">YAŞAMBİLİM</Button>
-          </Link>
-          <Link to="/evrim">
-            <Button color="#e7432b">EVRİM KURAMI</Button>
-          </Link>
-          <Link to="/denemeler">
-            <Button color="#486769">DENEMELER</Button>
-          </Link>
+    let [paragraph, setParagraph] = useState([]);
+    useEffect(() => {
+        let subscribed = true;
+        sanityClient
+            .fetch(
+                `*[_type in ["settings"]]`
+            )
+            .then((data) => {
+                if (subscribed) {
+                    setParagraph(data)
+                    console.log(data)
+                }
+            })
+            .catch(console.error);
+        console.log("accordion out");
+        return () => {
+            subscribed = false;
+        };
+    }, []);
+
+    const serializer = {
+        block: (props) => (
+            <p style={{ marginBottom: "20px" }}> {props.children} </p>
+        ),
+        marks: {
+            em: ({ children }) => <i> {children} </i>,
+            strong: (props) => <strong> {props.children} </strong>,
+            underline: (props) => <u> {props.children} </u>,
+            // TODO if any mark has props.value.pixels, then set fontSize as that. Else don't set fontsize.homecs
+            fontStyles: (props) => {
+                let decorator = "";
+                if (props.children[0].props) {
+                    decorator = props.children[0].props.markType;
+                }
+                const content = ` ${props.text} `;
+                console.log(props);
+
+                if (decorator === "strong") {
+                    return (
+                        <strong
+                            style={{
+                                fontSize: `${props.value.pixels}px`,
+                                fontFamily: `${props.value.fontFamily}`,
+                            }}
+                        >
+                            {content}
+                        </strong>
+                    );
+                }
+                if (decorator === "em") {
+                    return (
+                        <em
+                            style={{
+                                fontSize: `${props.value.pixels}px`,
+                                fontFamily: `${props.value.fontFamily}`,
+                            }}
+                        >
+                            {content}
+                        </em>
+                    );
+                }
+                if (decorator === "underline") {
+                    return (
+                        <u
+                            style={{
+                                fontSize: `${props.value.pixels}px`,
+                                fontFamily: `${props.value.fontFamily}`,
+                            }}
+                        >
+                            {content}
+                        </u>
+                    );
+                }
+                if (decorator === "strike-through") {
+                    return (
+                        <s
+                            style={{
+                                fontSize: `${props.value.pixels}px`,
+                                fontFamily: `${props.value.fontFamily}`,
+                            }}
+                        >
+                            {content}
+                        </s>
+                    );
+                } else {
+                    return (
+                        <span
+                            style={{
+                                fontSize: `${props.value.pixels}px`,
+                                fontFamily: props.value.fontFamily
+                                    ? `${props.value.fontFamily}`
+                                    : "Literata",
+                            }}
+                        >
+                            {content}
+                        </span>
+                    );
+                }
+            },
+        }
+    }
+    return (
+        <div className={classes["bg-container"]}>
+
+            <img className={classes.bg} src={bg} alt="background" />
+            <div className={classes["octopus-wrapper"]}>
+                <img className={classes.octopus} src={octopus} alt="octopus" />
+            </div>
+            <div className={classes["text-container"]}>
+                {paragraph && paragraph[0] &&  <PortableText value={paragraph[0].homeContent} components={serializer} />}
+                <div className={classes.buttons}>
+                    <Link to="/yasambilim">
+                        <Button color="#6ab165">YAŞAMBİLİM</Button>
+                    </Link>
+                    <Link to="/evrim">
+                        <Button color="#e7432b">EVRİM KURAMI</Button>
+                    </Link>
+                    <Link to="/denemeler">
+                        <Button color="#486769">DENEMELER</Button>
+                    </Link>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 export default Home;
