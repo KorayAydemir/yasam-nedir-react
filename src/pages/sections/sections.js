@@ -43,14 +43,11 @@ const Sections = () => {
     // wordData && console.log(wordData);
     // tesjdt
     if (altBolum && altBolum[0]) {
-        console.log(altBolum)
-        console.log(currentChapter, currentSection)
         const content =
         altBolum[0] &&
         altBolum
             .filter((a) => a.bolum_no === parseInt(currentSection))
             .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
-        console.log(content)
         setTitle(
             `BİRİM ${currentChapter}: ${content.birim_title} / BÖLÜM ${currentSection}: ${content.bolum_title}`
         );
@@ -94,7 +91,7 @@ const Sections = () => {
                     altBolum={a.alt_bolum_no}
                     value={a.content}
                     img={a.content.filter((c) => {
-                        return c.asset && c.asset;
+                            if (c.asset){return c.asset}
                     })} /*a.content.map((c) => {
              return c.asset && urlFor(c.asset).url();
            })*/

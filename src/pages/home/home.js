@@ -18,7 +18,6 @@ const Home = () => {
             .then((data) => {
                 if (subscribed) {
                     setParagraph(data)
-                    console.log(data)
                 }
             })
             .catch(console.error);
@@ -29,9 +28,14 @@ const Home = () => {
     }, []);
 
     const serializer = {
-        block: (props) => (
-            <p style={{ marginBottom: "20px" }}> {props.children} </p>
-        ),
+        block: (props) => {
+            if (paragraph[0].lineHeight.value) {
+                return <p style={{ marginBottom: "20px", lineHeight: paragraph[0].lineHeight.value }}> {props.children} </p>
+            }
+            else {
+                return <p style={{ marginBottom: "20px", lineHeight: "1.2rem" }}> {props.children} </p>
+            }
+        },
         marks: {
             em: ({ children }) => <i> {children} </i>,
             strong: (props) => <strong> {props.children} </strong>,
@@ -43,7 +47,6 @@ const Home = () => {
                     decorator = props.children[0].props.markType;
                 }
                 const content = ` ${props.text} `;
-                console.log(props);
 
                 if (decorator === "strong") {
                     return (
@@ -117,7 +120,7 @@ const Home = () => {
                 <img className={classes.octopus} src={octopus} alt="octopus" />
             </div>
             <div className={classes["text-container"]}>
-                {paragraph && paragraph[0] &&  <PortableText value={paragraph[0].homeContent} components={serializer} />}
+                {paragraph && paragraph[0] && <PortableText value={paragraph[0].homeContent} components={serializer} />}
                 <div className={classes.buttons}>
                     <Link to="/yasambilim">
                         <Button color="#6ab165">YAŞAMBİLİM</Button>

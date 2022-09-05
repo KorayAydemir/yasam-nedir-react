@@ -14,12 +14,12 @@ const AccordionItem = (props) => {
   //  console.log(props.value);
   const title = props.title;
   const serializer = {
-    block: (props) => (
-      <p style={{ marginBottom: "20px" }}> {props.children} </p>
-    ),
+    block: (props) => {
+      return <p style={{ marginBottom: "20px" }}> {props.children} </p>
+    },
     types: {
       image: (props) => (
-        <div>
+        props.value.asset && <div>
           <a
             href={urlFor(props.value.asset._ref).url()}
             target={"_blank"}
@@ -54,7 +54,6 @@ const AccordionItem = (props) => {
           decorator = props.children[0].props.markType;
         }
         const content = ` ${props.text} `;
-        console.log(props);
 
         if (decorator === "strong") {
           return (

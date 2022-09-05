@@ -291,10 +291,9 @@ export const mySchemas = [
         type: "object", title: "Genel Ayarlar", name: "settings", fields: [
 
             {
-                name: "fontStyles",
+                name: "lineHeight",
                 type: "object",
-                title: "Paragraf Stilleri",
-                blockEditor: { icon: fontSizeIcon, render: fontSizeRender },
+                title: "Satır Aralığı",
                 options: {
                     collapsible: true, // Makes the whole fieldset collapsible
                     collapsed: true, // Defines if the fieldset should be collapsed by default or not
@@ -303,16 +302,22 @@ export const mySchemas = [
                 },
                 fields: [
                     {
-                        name: "pixels",
-                        type: "number",
-                        title: "Pixels",
-                    },
-                    {
-                        name: "fontFamily",
+                        name: "value",
                         type: "string",
-                        title: "Yazı Tipi",
+                        title: "Değer",
                         options: {
-                            list: fonts,
+                            list: [{ title: "1 (aralık yok)", value: "1" },
+                            { title: "1.1", value: "1.1" },
+                            { title: "1.2 (varsayılan)", value: "1.2" },
+                            { title: "1.3", value: "1.3" }, 
+                            { title: "1.4", value: "1.4" },
+                            { title: "1.5", value: "1.5" },
+                            { title: "1.6", value: "1.6" },
+                            { title: "1.7", value: "1.7" },
+                            { title: "1.8", value: "1.8" },
+                            { title: "1.9", value: "1.9" },
+                            { title: "2", value: "2" },
+                            ],
                         },
                     },
                 ],
@@ -376,3 +381,4 @@ export const mySchemas = [
         ]
     }
 ];
+
