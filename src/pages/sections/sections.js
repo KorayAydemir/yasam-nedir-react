@@ -84,13 +84,14 @@ const Sections = () => {
             .filter((a) => a.bolum_no === parseInt(currentSection))
             .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
             .alt_bolumler.map((a) => (
+                    console.log(a.content),
                 <AccordionItem
                     title={a.title}
                     key={a.alt_bolum_no}
                     bolum={currentSection}
                     altBolum={a.alt_bolum_no}
-                    value={a.content}
-                    img={a.content.filter((c) => {
+                    value={a.content && a.content}
+                    img={a.content && a.content.filter((c) => {
                             if (c.asset){return c.asset}
                     })} /*a.content.map((c) => {
              return c.asset && urlFor(c.asset).url();
