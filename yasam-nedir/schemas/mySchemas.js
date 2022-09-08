@@ -263,6 +263,13 @@ export const mySchemas = [
                                 options: { isHighlighted: true },
                             },
                             {
+                                name: "imgPos",
+                                type: "string",
+                                title: "Resim Pozisyonu",
+                                initialValue: "left" ,
+                                options: { list: [{ title: "Sol", value: "left", }, { title: "Orta", value: "mid"},{ title: "Sağ", value: "right"} ], isHighlighted: true },
+                            },
+                            {
                                 name: "fit",
                                 type: "string",
                                 options: {
@@ -309,7 +316,7 @@ export const mySchemas = [
                             list: [{ title: "1 (aralık yok)", value: "1" },
                             { title: "1.1", value: "1.1" },
                             { title: "1.2 (varsayılan)", value: "1.2" },
-                            { title: "1.3", value: "1.3" }, 
+                            { title: "1.3", value: "1.3" },
                             { title: "1.4", value: "1.4" },
                             { title: "1.5", value: "1.5" },
                             { title: "1.6", value: "1.6" },
