@@ -18,13 +18,19 @@ const AccordionItem = (props) => {
             return <p style={{ marginBottom: "20px" }}> {props.children} </p>
         },
         types: {
+            textAlignment: (props) => {
+                let alignment = {}
+                if (props.value.alignment === "right") { alignment = {textAlign: "right" }}
+                else if (props.value.alignment === "center") { alignment = { textAlign: props.value.alignment } }
+                return <div style={alignment}><PortableText value={props.value.text} /></div>
+            },
             image: (props) => {
-                const mid = {margin: "0 auto"}
-                const right = {float: "right"}
-                let imgPos = {float: "left"}  
-                if (props.value.imgPos === "right")  { imgPos = right} 
-                else if (props.value.imgPos === "mid") {imgPos = mid}
-            return props.value.asset && <div>
+                const mid = { margin: "0 auto" }
+                const right = { float: "right" }
+                let imgPos = { float: "left" }
+                if (props.value.imgPos === "right") { imgPos = right }
+                else if (props.value.imgPos === "mid") { imgPos = mid }
+                return props.value.asset && <div>
                     <a
                         href={urlFor(props.value.asset._ref).url()}
                         target={"_blank"}
