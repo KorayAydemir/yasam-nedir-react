@@ -393,6 +393,22 @@ export const mySchemas = [
         name: 'textAlignment',
         type: 'object',
         title: 'Pozisyon',
+        preview: {
+            select: {
+                title: 'text[0].children[0].text',
+                subtitle: 'alignment'
+            },
+            prepare(selection) {
+                let { title, subtitle } = selection
+                if (subtitle === "center") {subtitle = 'Ortalanmış' }
+                if (subtitle === "left") {subtitle = "Sola dayalı"}
+                if (subtitle === "right") {subtitle = "Sağa dayalı"}
+                return {
+                    title: title,
+                    subtitle: subtitle
+                }
+            }
+        },
         fields: [
             {
                 title: 'Content',
@@ -474,10 +490,11 @@ export const mySchemas = [
                 name: 'alignment',
                 type: 'string',
                 initialValue: "center",
+                preview: { select: { title: "title", subtitle: "yo" } },
                 options: {
                     list: [
-                        { title: 'Sağ', value: 'left' },
-                        { title: 'Sol', value: 'right' },
+                        { title: 'Sağ', value: 'right' },
+                        { title: 'Sol', value: 'left' },
                         { title: 'Orta', value: 'center' },
                     ],
                 }
