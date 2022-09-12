@@ -182,3 +182,6 @@ code {
     monospace;
 }
 */
+
+sup {font-size:xx-small !important; vertical-align:top !important;}
+
