@@ -2467,6 +2467,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-latex@^2.0.0":
+  "integrity" "sha512-fk/hy2bMC8L6hB3Qgsbx5hCQUKwaZX2Cn06HyOGvbVjQAg8/EhEFanTefCmx26AVH2Pqny8orqWLF3ylEf0Ymg=="
+  "resolved" "https://registry.npmjs.org/@types/react-latex/-/react-latex-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   "integrity" "sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q=="
   "resolved" "https://registry.npmjs.org/@types/react/-/react-18.0.14.tgz"
@@ -3601,6 +3608,11 @@
   "version" "1.0.8"
   dependencies:
     "delayed-stream" "~1.0.0"
+
+"commander@^2.19.0":
+  "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
+  "resolved" "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
+  "version" "2.20.3"
 
 "commander@^2.20.0":
   "integrity" "sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ=="
@@ -6502,6 +6514,13 @@
     "readable-stream" "~2.3.6"
     "setimmediate" "^1.0.5"
 
+"katex@^0.10.2":
+  "integrity" "sha512-cQOmyIRoMloCoSIOZ1+gEwsksdJZ1EW4SWm3QzxSza/QsnZr6D4U1V9S4q+B/OLm2OQ8TCBecQ8MaIfnScI7cw=="
+  "resolved" "https://registry.npmjs.org/katex/-/katex-0.10.2.tgz"
+  "version" "0.10.2"
+  dependencies:
+    "commander" "^2.19.0"
+
 "kind-of@^6.0.2":
   "integrity" "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw=="
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
@@ -8105,6 +8124,13 @@
   "integrity" "sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.2.0.tgz"
   "version" "18.2.0"
+
+"react-latex@^2.0.0":
+  "integrity" "sha512-x17uDCfqBgR+5ZF/zplRCuHdEbX22CJlVipOqMUinRMoiOwh5fr3jbjD4zqVQ8pIs4AnF0BWPDR2S7Fyd8Snxw=="
+  "resolved" "https://registry.npmjs.org/react-latex/-/react-latex-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "katex" "^0.10.2"
 
 "react-minimal-side-navigation@^1.9.2":
   "integrity" "sha512-G6xjpgVyAEWOB3+XCnUksNn7JVD99MtSlIOLKRfzscYq0KyiC7vm63L01Pstl3homp1A5i6sqkG/CuScZME0aA=="

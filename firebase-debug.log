@@ -1,0 +1,33 @@
+[debug] [2022-09-13T02:47:41.455Z] ----------------------------------------------------------------------
+[debug] [2022-09-13T02:47:41.457Z] Command:       /home/koray/.nvm/versions/node/v16.17.0/bin/node /usr/bin/firebase deploy
+[debug] [2022-09-13T02:47:41.457Z] CLI Version:   11.8.0
+[debug] [2022-09-13T02:47:41.457Z] Platform:      linux
+[debug] [2022-09-13T02:47:41.457Z] Node Version:  v16.17.0
+[debug] [2022-09-13T02:47:41.461Z] Time:          Tue Sep 13 2022 05:47:41 GMT+0300 (GMT+03:00)
+[debug] [2022-09-13T02:47:41.461Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-13T02:47:41.501Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-13T02:47:41.502Z] > authorizing via signed-in user (korayaydemir276@gmail.com)
+[debug] [2022-09-13T02:47:41.502Z] [iam] checking project yasamnedir for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-09-13T02:47:41.503Z] > refreshing access token with scopes: []
+[debug] [2022-09-13T02:47:41.504Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-09-13T02:47:41.504Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-09-13T02:47:41.745Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-09-13T02:47:41.745Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-09-13T02:47:41.750Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/yasamnedir:testIamPermissions [none]
+[debug] [2022-09-13T02:47:41.750Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/yasamnedir:testIamPermissions x-goog-quota-user=projects/yasamnedir
+[debug] [2022-09-13T02:47:41.750Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/yasamnedir:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-09-13T02:47:42.763Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/yasamnedir:testIamPermissions 200
+[debug] [2022-09-13T02:47:42.763Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/yasamnedir:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-09-13T02:47:42.764Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir [none]
+[debug] [2022-09-13T02:47:43.225Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir 200
+[debug] [2022-09-13T02:47:43.225Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir {"projectId":"yasamnedir","projectNumber":"979608162508","displayName":"YasamNedir","name":"projects/yasamnedir","resources":{"hostingSite":"yasamnedir"},"state":"ACTIVE","etag":"1_bb3d4363-d257-4551-81af-62b347cb53ff"}
+[info] 
+[info] === Deploying to 'yasamnedir'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-09-13T02:47:43.228Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir [none]
+[debug] [2022-09-13T02:47:43.583Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir 200
+[debug] [2022-09-13T02:47:43.584Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/yasamnedir {"projectId":"yasamnedir","projectNumber":"979608162508","displayName":"YasamNedir","name":"projects/yasamnedir","resources":{"hostingSite":"yasamnedir"},"state":"ACTIVE","etag":"1_bb3d4363-d257-4551-81af-62b347cb53ff"}
+[debug] [2022-09-13T02:47:43.586Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/979608162508/sites/yasamnedir/versions [none]
+[debug] [2022-09-13T02:47:43.586Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/979608162508/sites/yasamnedir/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}

@@ -1,0 +1,10 @@
+.unset *:not(.latex *:not(.base)){
+    all:revert;
+    line-height:2rem;
+    margin:0;
+}
+
+.latex + p{
+    height:200px;
+    display:none;
+}

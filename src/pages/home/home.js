@@ -121,7 +121,6 @@ const Home = () => {
             </div>
             <div className={classes["text-container"]}>
                 {paragraph && paragraph[0] && <PortableText value={paragraph[0].homeContent} components={serializer} />}
-                <sup>superscript</sup>
                 <div className={classes.buttons}>
                     <Link to="/yasambilim">
                         <Button color="#6ab165">YAŞAMBİLİM</Button>

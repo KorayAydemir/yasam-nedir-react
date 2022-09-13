@@ -3,7 +3,9 @@ import { PortableText } from "@portabletext/react";
 import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import classes from "./AccordionItem.module.css";
+import "./AccordionItem2.css"
 
+var Latex = require("react-latex")
 const AccordionItem = (props) => {
     //console.log("h");
     const [isActive, setIsActive] = useState(false);
@@ -15,12 +17,27 @@ const AccordionItem = (props) => {
     const title = props.title;
     const serializer = {
         block: (props) => {
-            return <p style={{ marginBottom: "20px" }}> {props.children} </p>
+            return <><p style={{ display: "inline" }}> {props.children} </p> <p className="seperator" style={{ height: "20px", display: "block" }}></p></>
         },
         types: {
+            latex: (props) => {
+                const latex = props && props.value.body;
+                const latexValue = String.raw`${latex}`
+                const mid = { textAlign: "center", fontSize: `${props.value.fontSize}px`,  }
+                const right = { textAlign: "right", fontSize: `${props.value.fontSize}px` }
+                let latexPos = { fontSize: `${props.value.fontSize}px` }
+                if (props.value.alignment === "right") { latexPos = right }
+                else if (props.value.alignment === "center") { latexPos = mid }
+                return (<>
+                    <p style={latexPos} className="latex">
+                        <Latex>{`$$${latexValue}$$`}</Latex>
+                    </p>
+                    <p className="seperator" style={{ marginTop: "20px" }}></p>
+                </>)
+            },
             textAlignment: (props) => {
                 let alignment = {}
-                if (props.value.alignment === "right") { alignment = {textAlign: "right" }}
+                if (props.value.alignment === "right") { alignment = { textAlign: "right" } }
                 else if (props.value.alignment === "center") { alignment = { textAlign: props.value.alignment } }
                 return <div style={alignment}><PortableText value={props.value.text} /></div>
             },
@@ -150,8 +167,8 @@ const AccordionItem = (props) => {
             <div
                 className={
                     isActive
-                        ? `${classes.active} ${classes.unset} `
-                        : `${classes.inactive} ${classes.unset}`
+                        ? `${classes.active} ${classes.unset} unset`
+                        : `${classes.inactive} ${classes.unset} unset`
                 }
             >
                 <div

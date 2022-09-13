@@ -55,7 +55,14 @@ const fontSizeRender = (props) => (
     </span>
 );
 
+const mathInlineIcon = () => (
+    <span>
+        <span style={{ fontWeight: 'bold' }}>∑</span>b
+    </span>
+)
+const mathIcon = () => <span style={{ fontWeight: 'bold' }}>∑</span>
 export const mySchemas = [
+
     {
         type: "document",
         title: "Birim",
@@ -75,6 +82,7 @@ export const mySchemas = [
             },
         },
         fields: [
+
             { type: "string", name: "title", title: "Birimin Adı" },
 
             {
@@ -180,6 +188,8 @@ export const mySchemas = [
                 type: "array",
                 of: [
                     { type: "textAlignment", name: "textAlignment", title: "Sunum" },
+                    {
+                        type: 'latex', icon: mathInlineIcon, title: 'Inline math'                     },
                     {
                         type: "block",
                         styles: [
@@ -400,9 +410,9 @@ export const mySchemas = [
             },
             prepare(selection) {
                 let { title, subtitle } = selection
-                if (subtitle === "center") {subtitle = 'Ortalanmış' }
-                if (subtitle === "left") {subtitle = "Sola dayalı"}
-                if (subtitle === "right") {subtitle = "Sağa dayalı"}
+                if (subtitle === "center") { subtitle = 'Ortalanmış' }
+                if (subtitle === "left") { subtitle = "Sola dayalı" }
+                if (subtitle === "right") { subtitle = "Sağa dayalı" }
                 return {
                     title: title,
                     subtitle: subtitle
@@ -500,8 +510,39 @@ export const mySchemas = [
                 }
             }
         ]
-    }
-
+    },
+    {
+        name: 'portableTextWithLatex',
+        type: 'array',
+        title: 'Body',
+        of: [
+            {
+                type: 'block',
+                title: 'Block',
+                of: [
+                    {
+                        type: 'latex', icon: mathInlineIcon, title: 'Inline math', of: [
+                            {
+                                title: 'Yazı Pozisyonu',
+                                name: 'alignment',
+                                type: 'string',
+                                initialValue: "center",
+                                preview: { select: { title: "title", subtitle: "yo" } },
+                                options: {
+                                    list: [
+                                        { title: 'Sağ', value: 'right' },
+                                        { title: 'Sol', value: 'left' },
+                                        { title: 'Orta', value: 'center' },
+                                    ],
+                                }
+                            }
+                        ]
+                    },
+                ],
+            },
+            { type: 'latex', icon: mathIcon, title: 'Math block' },
+        ],
+    },
 ];
 
 
