@@ -9453,7 +9453,7 @@
     "diff-match-patch" "^1.0.5"
 
 "sanity-plugin-latex-input@github:KorayAydemir/latex-input":
-  "resolved" "git+ssh://git@github.com/KorayAydemir/latex-input.git#f755144f2b4d81385ca642a7ed37c3a946fab137"
+  "resolved" "git+ssh://git@github.com/KorayAydemir/latex-input.git#fb4abae2da124990f9663b947d079da1cfdd9040"
   "version" "1.0.1"
   dependencies:
     "@types/katex" "^0.11.0"
