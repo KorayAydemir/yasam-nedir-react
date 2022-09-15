@@ -6,6 +6,7 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
 import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
+import Navigation from "../Navigation/Navigation";
 
 const Chapters = (props) => {
   const builder = imageUrlBuilder(sanityClient);
@@ -71,9 +72,12 @@ const Chapters = (props) => {
     });
 
   return (
-    <div className="site-container">
-      <div className={classes.main}>{content}</div>
-    </div>
+    <>
+      <Navigation />
+      <div className="site-container">
+        <div className={classes.main}>{content}</div>
+      </div>
+    </>
   );
 };
 export default Chapters;

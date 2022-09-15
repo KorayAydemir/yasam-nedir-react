@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Birimler from "../../components/birimler";
 import sanityClient from "../../Client";
+import Navigation from "../../components/Navigation/Navigation"
 const Yasambilim = () => {
   const { setTitle } = useOutletContext();
 
@@ -25,6 +26,8 @@ const Yasambilim = () => {
 
   return (
     <>
+
+      <Navigation/>
       {/*categories && categories[0].title*/}
       <Birimler />
     </>

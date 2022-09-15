@@ -16,25 +16,26 @@ import Sections from "./pages/sections/sections";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 function App() {
-    return (
-        <div>
-            <div className="site-container"></div>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/" element={<Header />}>
-                    <Route path="/yasambilim" element={<Yasambilim />}></Route>
-                    <Route path="/yasambilim/:chapterId" element={<Chapters />} />
-                    <Route
-                        path="/yasambilim/:chapterId/:sectionId"
-                        element={<Sections />}
-                    />
+  return (
+    <div>
 
-                    <Route path="/evrim" element={<Evrim />} />
-                    <Route path="/denemeler" element={<Denemeler />} />
-                </Route>
-            </Routes>
-        </div>
-    );
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Header />}>
+          <Route path="/yasambilim" element={<Yasambilim />}></Route>
+          <Route path="/yasambilim/:chapterId" element={<Chapters />} />
+          <Route
+            path="/yasambilim/:chapterId/:sectionId"
+            element={<Sections />}
+          />
+
+          <Route path="/evrim" element={<Evrim />} />
+          <Route path="/denemeler" element={<Denemeler />} />
+          <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

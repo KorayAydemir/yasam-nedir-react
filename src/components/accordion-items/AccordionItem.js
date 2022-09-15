@@ -24,16 +24,16 @@ const AccordionItem = (props) => {
       latex: (props) => {
         const sep = <div className="seperator" style={{ marginTop: "20px" }}></div>
         const latex = props && props.value.body;
-        const line = props.value.line
-        if (props.value.line === "newline") {line = "block"}
+        const line = props&&props.value && props.value.settings.line
+        if (props.value.settings.line === "newline") {line = "block"}
         const latexValue = String.raw`${latex}`
-        const mid = { display: line, textAlign: "center", fontSize: `${props.value.fontSize}px`, }
-        const right = { display: line, textAlign: "right", fontSize: `${props.value.fontSize}px` }
-        let latexPos = { display: line, fontSize: `${props.value.fontSize}px` }
-        if (props.value.alignment === "right") { latexPos = right }
-        else if (props.value.alignment === "center") { latexPos = mid }
+        const mid = { display: line, textAlign: "center", fontSize: `${props.value.settings.fontSize}px`, }
+        const right = { display: line, textAlign: "right", fontSize: `${props.value.settings.fontSize}px` }
+        let latexPos = { display: line, fontSize: `${props.value.settings.fontSize}px` }
+        if (props.value.settings.alignment === "right") { latexPos = right }
+        else if (props.value.settings.alignment === "center") { latexPos = mid }
         return (<>
-            { props.value.line === "newline" && sep}
+            { props.value.settings.line === "newline" && sep}
           <p style={latexPos} className="latex">
             <Latex>{`$$${latexValue}$$`}</Latex>
           </p>
