@@ -34,3 +34,6 @@ inactive {text-decoration: none}
 .navInactive{display:none}
 
 
+@media only screen and (max-width: 1365px) {
+  .navigation{display:none}
+}
