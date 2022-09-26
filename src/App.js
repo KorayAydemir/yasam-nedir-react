@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./globals/global.css";
 import Home from "./pages/home/home";
@@ -10,6 +10,7 @@ import Denemeler from "./pages/denemeler/denemeler";
 import Chapters from "./components/chapters/Chapters";
 import Header from "./components/header";
 import Sections from "./pages/sections/sections";
+import Navigation from "./components/Navigation/Navigation";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,7 +19,7 @@ import Sections from "./pages/sections/sections";
 function App() {
   return (
     <div>
-
+      {console.log(window.location.pathname)}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element={<Header />}>
@@ -34,7 +35,7 @@ function App() {
           <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
         </Route>
       </Routes>
-    </div>
+    </div >
   );
 }
 
