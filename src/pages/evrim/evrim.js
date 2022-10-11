@@ -3,7 +3,6 @@ import { useOutletContext } from "react-router-dom";
 
 const Evrim = () => {
   const { setTitle } = useOutletContext();
-
   console.log(setTitle);
 
   useState(() => {

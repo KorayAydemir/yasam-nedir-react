@@ -1,0 +1,140 @@
+.active{
+text-decoration:underline}
+.inactive {text-decoration: none}
+
+.navActive{display:block;  transition:0.5s}
+.navInactive{ display:none; transition:0.5s}
+.input-wrapper input{
+
+margin-bottom:10px}
+.input-wrapper{
+margin-left:10px}
+ @media only screen and (max-width: 1365px) {
+.input-wrapper{
+margin-left:18px}
+
+}
+
+
+
+.arrow-icon {
+  display:block;
+  position: relative;
+  border-radius: 4px;
+  top:9px;
+  right:25px;
+}
+
+.left-bar {
+  position: absolute;
+  background-color:#cf8d36 ;
+  top: 0;
+  left:0;
+  width: 15px;
+  height: 4px;
+  display: block;
+  transform: rotate(40deg);
+  float: right;
+  border-radius: 2px;
+  &:after {
+    content:"";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 6px 10px 10px 6px;
+    transition: all $duration $easing;
+    z-index: -1;
+  }
+}
+
+.right-bar {
+  position: absolute;
+  background-color: #cf8d36;
+  top: 0px;
+  left:8px;
+  width: 15px;
+  height: 4px;
+  display: block;
+  transform: rotate(-40deg);
+  float: right;
+  border-radius: 2px;
+  &:after {
+    content:"";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 10px 6px 6px 10px;
+    transition: all $duration $easing;
+    z-index: -1;
+  }
+}
+
+
+.arrow-icon2 {
+  display:block;
+  position: relative;
+  border-radius: 4px;
+  line-height:20px;
+  top:20px;
+  right:15px;
+  transform-origin: left top;
+  transform: rotate(-90deg);
+}
+
+.left-bar2 {
+  position: absolute;
+  background-color:#cf8d36 ;
+  top: 0;
+  left:0;
+  width: 15px;
+  height: 4px;
+  display: block;
+  transform: rotate(40deg);
+  float: right;
+  border-radius: 2px;
+  &:after {
+    content:"";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 6px 10px 10px 6px;
+    transition: all $duration $easing;
+    z-index: -1;
+  }
+}
+
+.right-bar2 {
+  position: absolute;
+  background-color: #cf8d36;
+  top: 0px;
+  left:8px;
+  width: 15px;
+  height: 4px;
+  display: block;
+  transform: rotate(-40deg);
+  float: right;
+  border-radius: 2px;
+  &:after {
+    content:"";
+    background-color: white;
+    width: 40px;
+    height: 10px;
+    display: block;
+    float: right;
+    border-radius: 10px 6px 6px 10px;
+    transition: all $duration $easing;
+    z-index: -1;
+  }
+}
+
+
+
+
+
+

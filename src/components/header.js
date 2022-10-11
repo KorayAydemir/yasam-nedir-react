@@ -26,7 +26,7 @@ const Header = () => {
         <button
           className={classes["sidenav-button"]}
           onClick={() => {
-            setWidth("60%");
+            setWidth("260px");
           }}
         ></button>
         <h1>
