@@ -12,6 +12,8 @@
   --scrollbar-thumb: #c1c1c1;
   --scrollbar-thumb-hover: #a8a8a8;
   --scrollbar-background: #f1f1f1;
+  --navigation-text-color: #3D7D97;
+  --header-background: #fff;
 }
 
 /* 2 */
@@ -30,6 +32,8 @@
   --scrollbar-thumb: #454a4d;
   --scrollbar-thumb-hover: #575e62;
   --scrollbar-background: #202324;
+  --navigation-text-color: cornflowerblue;
+  --header-background: #181a1b;
 }
 
 /* 3 */
@@ -53,6 +57,7 @@ a {
   margin-top: 20px;
   margin-right: 15px;
   right: 0;
+  z-index:104
 }
 
 .toggle-theme-wrapper span {

@@ -21,7 +21,7 @@ const Sections = () => {
     /* `*[_type in ["tooltips", "Bolum","alt_bolum" ]]{kelimeler, bolum_no, alt_bolum_no, title, content, "bolum_title": related_bolum->title, "bolum_no": related_bolum->bolum_no, "birim_no": related_bolum->related_birim->birim_no, "birim_title": related_bolum->related_birim->title}` */
     sanityClient
       .fetch(
-        `*[_type in ["tooltips",  "Bolum"]]{kelimeler, alt_bolumler, bolum_no, "bolum_title": title, "birim_no": related_birim->birim_no, "birim_title": related_birim->title}`
+        `*[_type in ["tooltips",  "Bolum"]]{kelimeler, alt_bolumler, bolum_no, title, "birim_no": related_birim->birim_no, "birim_title": related_birim->title}`
       )
       .then((data) => {
         if (subscribed) {
@@ -51,7 +51,7 @@ const Sections = () => {
         .filter((a) => a.bolum_no === parseInt(currentSection))
         .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
     setTitle(
-      `BİRİM ${currentChapter}: ${content.birim_title} / BÖLÜM ${currentSection}: ${content.bolum_title}`
+      `BİRİM ${currentChapter}: ${content.birim_title} / BÖLÜM ${currentSection}: ${content.title}`
     );
   }
 
@@ -99,11 +99,14 @@ const Sections = () => {
            })*/
         ></AccordionItem>
       ));
+  useEffect(() => {
+    altBolum.sort((a, b) => a.bolum_no - b.bolum_no).shift()
 
+  }, [altBolum])
   return (
     <>
-      <Navigation />
-      <div className={`site-container ${classes.accordions}`} style={{ marginTop: " 30px" }}>
+      <Navigation data={altBolum} />
+      <div className={`site-container ${classes.accordions}`} style={{ zIndex: "100", marginTop: "10px" }}>
         {content}
       </div>
     </>

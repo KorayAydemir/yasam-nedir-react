@@ -1146,7 +1146,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
-"@popperjs/core@^2.0.0", "@popperjs/core@^2.11.5", "@popperjs/core@^2.2.0", "@popperjs/core@^2.5.4":
+"@popperjs/core@^2.0.0", "@popperjs/core@^2.10.2", "@popperjs/core@^2.11.5", "@popperjs/core@^2.2.0", "@popperjs/core@^2.5.4":
   "integrity" "sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
   "version" "2.11.5"
@@ -1309,7 +1309,7 @@
     "object-assign" "^4.1.1"
     "rxjs" "^6.0.0"
 
-"@sanity/color@^2.0", "@sanity/color@^2.1.11", "@sanity/color@^2.1.14", "@sanity/color@^2.1.8":
+"@sanity/color@^2.0", "@sanity/color@^2.1.11", "@sanity/color@^2.1.14", "@sanity/color@^2.1.6", "@sanity/color@^2.1.8":
   "integrity" "sha512-ntCT72qUNck9XrCrMEpMrTGsNPK7edt3arou7YUBgb6IRjba6MtByTAz/LNXbRK5meMQFqYFpNKDErM351X+Ug=="
   "resolved" "https://registry.npmjs.org/@sanity/color/-/color-2.1.14.tgz"
   "version" "2.1.14"
@@ -1590,7 +1590,7 @@
     "prop-types" "^15.6.2"
     "scheduler" "^0.19.1"
 
-"@sanity/icons@^1.2.6", "@sanity/icons@^1.3.1":
+"@sanity/icons@^1.2.1", "@sanity/icons@^1.2.2", "@sanity/icons@^1.2.6", "@sanity/icons@^1.3.1":
   "integrity" "sha512-bK82ifbPLCAF10wx5xlq8b3irnZJyG/L1eNQcEjdBH+ztgOcylsdShzL2IlFETb91YdoEDcPGQlbS5iNUH2mcg=="
   "resolved" "https://registry.npmjs.org/@sanity/icons/-/icons-1.3.1.tgz"
   "version" "1.3.1"
@@ -1852,6 +1852,23 @@
     "@sanity/color" "^2.1.14"
     "@types/react" "^17.0.42"
     "rxjs" "^6.5.3"
+
+"@sanity/ui@^0.36.12":
+  "integrity" "sha512-5U2NPxjCsxmzv3p58wMczfwIaJVa3UCjNGs7CCK2RoLo0G0nyT+swMBLRmXiDA3WnCt/o5oaYYqesfL8Rgkchg=="
+  "resolved" "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.17.tgz"
+  "version" "0.36.17"
+  dependencies:
+    "@juggle/resize-observer" "^3.3.1"
+    "@popperjs/core" "^2.10.2"
+    "@reach/auto-id" "^0.16.0"
+    "@sanity/color" "^2.1.6"
+    "@sanity/icons" "^1.2.2"
+    "framer-motion" "5.3.3"
+    "lodash" "^4.17.21"
+    "popper-max-size-modifier" "^0.2.0"
+    "react-is" "^17.0.2"
+    "react-popper" "^2.2.5"
+    "react-refractor" "^2.1.5"
 
 "@sanity/ui@^0.37.9":
   "integrity" "sha512-TWsNnJsG/DETZyc0EqxOjxKJKaTQttDVz5i27LJkNpYv+f/G/ABuO/voroFffgkjA3jf/VZiz8VY4O5AdXsOLQ=="
@@ -5116,6 +5133,19 @@
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
+"framer-motion@5.3.3":
+  "integrity" "sha512-s4mz0E4/TPTKXqKnpb578S0Jp/0JhAyvDpULFe95kHnWs1lOCKf2+EEl6yAX+1wfPLUYokZzudiK9jam0ZAVdQ=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-5.3.3.tgz"
+  "version" "5.3.3"
+  dependencies:
+    "framesync" "6.0.1"
+    "hey-listen" "^1.0.8"
+    "popmotion" "11.0.0"
+    "style-value-types" "5.0.0"
+    "tslib" "^2.1.0"
+  optionalDependencies:
+    "@emotion/is-prop-valid" "^0.8.2"
+
 "framer-motion@6.3.0":
   "integrity" "sha512-Nm6l2cemuFeSC1fmq9R32sCQs1eplOuZ3r14/PxRDewpE3NUr+ul5ulGRRzk8K0Aa5p76Tedi3sfCUaTPa5fRg=="
   "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-6.3.0.tgz"
@@ -5129,7 +5159,7 @@
   optionalDependencies:
     "@emotion/is-prop-valid" "^0.8.2"
 
-"framesync@6.0.1":
+"framesync@^6.0.1", "framesync@6.0.1":
   "integrity" "sha512-fUY88kXvGiIItgNC7wcTOl0SNRCVXMKSWW2Yzfmn7EKNc+MpCzcz9DhdHcdjbrtN3c6R4H5dTY2jiCpPdysEjA=="
   "resolved" "https://registry.npmjs.org/framesync/-/framesync-6.0.1.tgz"
   "version" "6.0.1"
@@ -6670,7 +6700,7 @@
   "resolved" "https://registry.npmjs.org/lodash.uniq/-/lodash.uniq-4.5.0.tgz"
   "version" "4.5.0"
 
-"lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.4", "lodash@^4.3.0":
+"lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.21", "lodash@^4.17.4", "lodash@^4.3.0":
   "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
   "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
@@ -7709,6 +7739,16 @@
   "version" "4.2.2"
   dependencies:
     "@babel/runtime" "^7.17.8"
+
+"popmotion@11.0.0":
+  "integrity" "sha512-kJDyaG00TtcANP5JZ51od+DCqopxBm2a/Txh3Usu23L9qntjY5wumvcVf578N8qXEHR1a+jx9XCv8zOntdYalQ=="
+  "resolved" "https://registry.npmjs.org/popmotion/-/popmotion-11.0.0.tgz"
+  "version" "11.0.0"
+  dependencies:
+    "framesync" "^6.0.1"
+    "hey-listen" "^1.0.8"
+    "style-value-types" "5.0.0"
+    "tslib" "^2.1.0"
 
 "popmotion@11.0.3":
   "integrity" "sha512-Y55FLdj3UxkR7Vl3s7Qr4e9m0onSnP8W7d/xQLsoJM40vs6UKHFdygs6SWryasTZYqugMjm3BepCF4CWXDiHgA=="
@@ -8897,7 +8937,7 @@
   "resolved" "https://registry.npmjs.org/react-props-stream/-/react-props-stream-1.0.1.tgz"
   "version" "1.0.1"
 
-"react-refractor@^2.1.6", "react-refractor@^2.1.7":
+"react-refractor@^2.1.5", "react-refractor@^2.1.6", "react-refractor@^2.1.7":
   "integrity" "sha512-avNxSSsnjYg+BKpO8LVCK14KRn5pLZ+8DInMiUEeZPL6hs0SN0zafl3mJIxavGQPKyihqbXqzq4CYNflJQjaaw=="
   "resolved" "https://registry.npmjs.org/react-refractor/-/react-refractor-2.1.7.tgz"
   "version" "2.1.7"
@@ -8960,7 +9000,7 @@
   dependencies:
     "debounce" "^1.2.1"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^15.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react@^15.0.2 || ^16.0.0 || ^17.0.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.0.0-0", "react@^16.2.0 || ^17", "react@^16.8 || ^17", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || 17.x", "react@^16.9 || ^17", "react@^16.9 || ^17 || ^18", "react@^17 || ^18", "react@^17.0", "react@^17.0.0 || ^16.3.0 || ^15.5.4", "react@>= 15.3", "react@>= 16.8.0", "react@>=0.12.1", "react@>=15.0.0", "react@>=15.5 <=16.x", "react@>=16", "react@>=16.13", "react@>=16.8 || ^17.0.0", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@>=16.8.0", "react@17.0.2":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0", "react@^15.0.0", "react@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react@^15.0.2 || ^16.0.0 || ^17.0.0", "react@^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.3.0 || 16 || 17 || 18", "react@^16.0.0-0", "react@^16.2.0 || ^17", "react@^16.8 || ^17", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || 17.x", "react@^16.9 || ^17", "react@^16.9 || ^17 || ^18", "react@^17 || ^18", "react@^17.0", "react@^17.0.0 || ^16.3.0 || ^15.5.4", "react@^17.0.2", "react@>= 15.3", "react@>= 16.8.0", "react@>=0.12.1", "react@>=15.0.0", "react@>=15.5 <=16.x", "react@>=16", "react@>=16.13", "react@>=16.8 || ^17.0.0", "react@>=16.8 || ^17.0.0 || ^18.0.0", "react@>=16.8.0", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -9451,6 +9491,14 @@
   "version" "1.0.9"
   dependencies:
     "diff-match-patch" "^1.0.5"
+
+"sanity-plugin-iframe-pane@^1.1.1":
+  "integrity" "sha512-KpRxTwIpUPPrPOj14aahFR2xrONcMo4hxJQr9U4RgCd1B5/a8g6z87rVlckIBa5ofokPfQTH8IdgDhRgAx5Dyg=="
+  "resolved" "https://registry.npmjs.org/sanity-plugin-iframe-pane/-/sanity-plugin-iframe-pane-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "@sanity/icons" "^1.2.1"
+    "@sanity/ui" "^0.36.12"
 
 "sanity-plugin-latex-input@github:KorayAydemir/latex-input":
   "resolved" "git+ssh://git@github.com/KorayAydemir/latex-input.git#1e08b26cb3c933ef09d2863607e3e814e9dd9527"

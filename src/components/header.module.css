@@ -1,7 +1,15 @@
 .header h1 {
   text-align: center;
 }
-
+.header-container{
+z-index:103;
+}
+.header-bottom {
+z-index:102;
+}
+.header{
+  background:var(--header-background);
+z-index:103}
 .sidenav-button {
   display: none;
 }
@@ -21,6 +29,7 @@
   }
   .header h1 {
     margin-top: 20px;
+  padding-bottom:20px;
   }
 
   .sidenav-button {
@@ -57,6 +66,7 @@
 .menu ul {
   display: flex;
 }
+
 
 .menu ul li {
   color: var(--header-menu-span);
@@ -115,7 +125,7 @@
   display: flex;
   align-items: center;
   background-color: var(--header-bottom-background);
-  padding: 30px 0;
+  padding: 30px 50px;
 }
 
 .header-bottom span {
@@ -145,10 +155,15 @@
     text-align: center;
   }
   .header-bottom {
-    padding: 15px 0;
-    margin-top: 20px;
+    padding: 15px 40px;
     font-size: 1.1rem;
   }
+  .header-bottom span {
+    margin-left: 22px;
+  }
+}
+
+@media only screen and (max-width: 1360px) {
   .header-bottom span {
     margin-left: 22px;
   }

@@ -23,13 +23,13 @@ const Yasambilim = () => {
       .then((data) => setCategories(data))
       .catch(console.error);
   }, []); dont make unnecessary requests*/
-
+  const getData = data => {
+    console.log(data)
+  }
   return (
     <>
-
-      <Navigation/>
       {/*categories && categories[0].title*/}
-      <Birimler />
+      <Birimler data={getData} />
     </>
   );
 };
