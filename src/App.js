@@ -6,7 +6,9 @@ import Home from "./pages/home/home";
 // Import the functions you need from the SDKs you need
 import Yasambilim from "./pages/yasambilim/yasambilim";
 import Evrim from "./pages/evrim/evrim";
+import EvrimMain from "./components/EvrimMain/EvrimMain"
 import Denemeler from "./pages/denemeler/denemeler";
+import DenemelerMain from "./components/DenemelerMain/DenemelerMain"
 import Chapters from "./components/chapters/Chapters";
 import Header from "./components/header";
 import Sections from "./pages/sections/sections";
@@ -37,7 +39,9 @@ function App() {
             />
 
             <Route path="/evrim" element={<Evrim />} />
+            <Route path="/evrim/:evrimName" element={<EvrimMain />} />
             <Route path="/denemeler" element={<Denemeler />} />
+            <Route path="/denemeler/:denemeName" element={<DenemelerMain />} />
             <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
           </Route>
         </Routes>

@@ -1,22 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import classes from "./denemeler.module.css"
 import Birim from "../../components/Birim"
-import image from "../home/images/c63c19bb811929b7f98aa41ff4cce46c251058e3-155x136.webp"
+import imageUrlBuilder from "@sanity/image-url";
+
+import sanityClient from "../../Client"
 const Denemeler = () => {
   const { setTitle } = useOutletContext();
-
-  console.log(setTitle);
+  const [data, setData] = useState(null)
 
   useState(() => {
     setTitle("DENEMELER");
   }, []);
+
+
+  const builder = imageUrlBuilder(sanityClient);
+
+  function urlFor(source) {
+    return builder.image(source);
+  }
+
+  useEffect(() => {
+    let subscribed = true;
+    sanityClient
+      .fetch(`*[_type == "denemeler" ]`)
+      .then((data) => {
+        if (subscribed) {
+          setData(data);
+          console.log("denemeler");
+        }
+      })
+      .catch(console.error);
+    console.log("denemleer out");
+    return () => {
+      subscribed = false;
+    };
+  }, []);
+
+
+  const content = data && data.map((a) => (<Birim notNumbered={true}
+    key={a.title} icon={urlFor(a.deneme_icon)}>{a.title}</Birim>))
   return (
     <div className="site-container">
       <section className={classes.main}>
-        <Birim notNumbered={true} icon={image}>isim</Birim>
-        <Birim notNumbered={true} icon={image}>isim</Birim>
-        <Birim notNumbered={true} icon={image}>isim</Birim>
+        {content}
       </section>
     </div>
   )

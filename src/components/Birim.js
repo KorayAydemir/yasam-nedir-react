@@ -4,9 +4,10 @@ import classes from "./Birim.module.css";
 
 const Birim = (props) => {
   if (props.notNumbered) {
+    let slug = `${props.children}`.toLowerCase().split(" ").join("-")
     return (
       <Link
-        to={`test`}
+        to={slug}
         className={classes.card}
       >
         <div className={classes["card-content"]}>

@@ -8,6 +8,22 @@ export const DataDispatchContext = createContext(null);
 export function DataProvider({ children }) {
   const [data, dispatch] = useReducer(dataReducer, initialData)
   const [birimler, setBirimler] = useState(null)
+  function dataReducer(data, action) {
+    switch (action.type) {
+      case 'birim-bolum': {
+        return ["a"]
+      }
+      case 'alt-bolum': {
+        return action
+      }
+      case 'denemeler': {
+        return { obj: "abc" }
+      }
+      default: {
+        throw Error('Unknown action: ' + action.type);
+      }
+    }
+  }
   useEffect(() => {
     let subscribed = true;
     sanityClient
@@ -33,19 +49,6 @@ export function DataProvider({ children }) {
   )
 }
 
-function dataReducer(data, action) {
-  switch (action.type) {
-    case 'birim-bolum': {
-      return ["a"]
-    }
-    case 'alt-bolum': {
-      return "thedata altbolum";
-    }
-    default: {
-      throw Error('Unknown action: ' + action.type);
-    }
-  }
-}
 
 
-const initialData = null 
+const initialData = {} 

@@ -8,7 +8,7 @@ import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import Navigation from "../Navigation/Navigation";
 
-const Chapters = (props) => {
+const Chapters = () => {
   const builder = imageUrlBuilder(sanityClient);
   const { setTitle } = useOutletContext();
 
