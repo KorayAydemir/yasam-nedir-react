@@ -3,9 +3,9 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar"
 
 const Navigation = (props) => {
+
+
   const [isMenuShown, setIsMenuShown] = useState(false)
-  const unique = props.data && [...new Set(props.data.map(item => item.birim_title))];
-  const unique2 = props.data && [...new Set(props.data.map(item => ([item.birim_no, item.bolum_no, item.title])))];
 
   const Backdrop = (props) => {
     let displayState = props.width === "0%" ? "none" : "unset";
@@ -38,7 +38,7 @@ const Navigation = (props) => {
           </div>
           {<div className={`${classes["mobile-tree"]} ${width}`}>
 
-            <SearchBar placeholder="Bölüm Ara..." data={props.data} data1={unique} data2={unique2} />
+            <SearchBar placeholder="Bölüm Ara..." />
           </div>}
         </ul>
       </nav>

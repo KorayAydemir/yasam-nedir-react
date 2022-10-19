@@ -5,29 +5,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import sanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";
+import { DataContext } from "./Contexts"
+import { useContext } from "react"
 
 import Navigation from "./Navigation/Navigation"
 
 const Birimler = () => {
-  const builder = imageUrlBuilder(sanityClient);
+  const birimler = useContext(DataContext)
 
-  const [birimler, setBirimler] = useState(null);
-  useEffect(() => {
-    let subscribed = true;
-    sanityClient
-      .fetch(`*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title, "birim_no": related_birim-> birim_no, "birim_icon": related_birim->birim_icon, }`)
-      .then((data) => {
-        if (subscribed) {
-          setBirimler(data.sort((a, b) => a.birim_no - b.birim_no));
-          console.log("birimler");
-        }
-      })
-      .catch(console.error);
-    console.log("birimler out");
-    return () => {
-      subscribed = false;
-    };
-  }, []);
+  const builder = imageUrlBuilder(sanityClient);
 
   function urlFor(source) {
     return builder.image(source);
@@ -43,7 +29,7 @@ const Birimler = () => {
 
   return (
     <>
-      <Navigation data={birimler && birimler.sort((a, b) => a.bolum_no - b.bolum_no)} />
+      <Navigation />
       <div className="site-container">
         <section className={classes.main}>
           {/*birimler &&
@@ -88,6 +74,7 @@ const Birimler = () => {
         </section>
       </div>
     </>
+
   );
 };
 export default Birimler;

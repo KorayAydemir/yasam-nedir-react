@@ -15,7 +15,6 @@ const Chapters = (props) => {
   const { chapterId } = useParams();
   const currentChapter = chapterId.match(/(\d+)/)[0];
   const [bolumler, setBirimler] = useState(null);
-  const [hiBolum, setHiBolum] = useState(null)
 
   function urlFor(source) {
     return builder.image(source);
@@ -36,7 +35,6 @@ const Chapters = (props) => {
               .sort((a, b) => a.bolum_no - b.bolum_no)
               .filter((a) => a.birim_no === parseInt(currentChapter))
           );
-          setHiBolum(data)
           console.log("bolumler");
         }
       })
@@ -76,7 +74,7 @@ const Chapters = (props) => {
 
   return (
     <>
-      <Navigation data={hiBolum} />
+      <Navigation />
       <div className="site-container">
         <div className={classes.main}>{content}</div>
       </div>

@@ -1,14 +1,18 @@
 import classes from "./SearchBar.module.css"
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from "react-router-dom"
+import { DataContext } from "../Contexts"
 
 const SearchBar = (props) => {
+  const dataContext = useContext(DataContext)
+  const data1 = dataContext && [...new Set(dataContext.map(item => item.birim_title))];
+  const data2 = dataContext && [...new Set(dataContext.map(item => ([item.birim_no, item.bolum_no, item.title])))];
   const activeClassName = classes.active;
   const inactiveClassName = classes.inactive;
   const [isNavOpen, setIsNavOpen] = useState({})
 
   const [filteredData, setFilteredData] = useState([])
-  useEffect(() => { setFilteredData(props.data2) }, [props.data2])
+  useEffect(() => { setFilteredData(data2) }, [dataContext])
 
   const handleFilter = (e) => {
     const searchWord = e.target.value
@@ -28,7 +32,7 @@ const SearchBar = (props) => {
       }
       )
     }
-    const newFilter = props.data2.filter((value) => {
+    const newFilter = data2.filter((value) => {
       return value[2].toLowerCase().includes(searchWord.toLowerCase());
     })
 
@@ -55,7 +59,7 @@ const SearchBar = (props) => {
       output_obj[i] = v
     }
   }
-  const tree2 = props.data1 && props.data1.map((item, i) => {
+  const tree2 = data1 && data1.map((item, i) => {
     return (
       <>
         <div className={classes["arrow-icon"]}>
@@ -64,7 +68,7 @@ const SearchBar = (props) => {
         </div>
         {/*console.log(unique2.filter((e) => { let a = e[0] === i + 1; return a }).map((e) => e[1]))*/}
         <li style={{ lineHeight: "20px", padding: "3px 0" }} key={item}>
-          <span onClick={() => toggleNav(filteredData.filter((e) => { let a = e[0] === i + 1; return a }).map((e) => e[1]))}> Birim {i + 1}: {item}</span>
+          <span onClick={() => toggleNav(filteredData && filteredData.filter((e) => { let a = e[0] === i + 1; return a }).map((e) => e[1]))}> Birim {i + 1}: {item}</span>
         </li>
         <ul> {
           filteredData && filteredData.filter((e) => { let a = e[0] === i + 1; return a }).map((c) => {

@@ -105,7 +105,7 @@ const Sections = () => {
   }, [altBolum])
   return (
     <>
-      <Navigation data={altBolum} />
+      <Navigation />
       <div className={`site-container ${classes.accordions}`} style={{ zIndex: "100", marginTop: "10px" }}>
         {content}
       </div>

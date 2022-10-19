@@ -1,0 +1,22 @@
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.main:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@media only screen and (max-width: 760px) {
+  .main a:not(:first-child) div {
+    margin-top: 20px;
+  }
+
+  .main a:first-child div {
+    margin-top: -5px;
+  }
+}
