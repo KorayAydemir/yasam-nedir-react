@@ -551,6 +551,7 @@ export const mySchemas = [
     name: "denemeler",
     fields: [
       { type: "string", name: "title", title: "Denemenin Başlığı" },
+      { type: "number", name: "index", title: "Sıra" },
       {
         title: "Denemenin Simgesi",
         type: "image",
@@ -687,6 +688,7 @@ export const mySchemas = [
     name: "evrim",
     fields: [
       { type: "string", name: "title", title: "Başlık" },
+      { type: "number", name: "index", title: "Sıra" },
       {
         title: "Simge",
         type: "image",

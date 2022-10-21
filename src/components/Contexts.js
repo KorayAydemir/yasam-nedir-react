@@ -1,29 +1,11 @@
-import { useState, createContext, useEffect, useReducer } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import sanityClient from "../Client"
 
 export const DataContext = createContext(null)
-export const DataDispatchContext = createContext(null);
 
 
 export function DataProvider({ children }) {
-  const [data, dispatch] = useReducer(dataReducer, initialData)
   const [birimler, setBirimler] = useState(null)
-  function dataReducer(data, action) {
-    switch (action.type) {
-      case 'birim-bolum': {
-        return ["a"]
-      }
-      case 'alt-bolum': {
-        return action
-      }
-      case 'denemeler': {
-        return { obj: "abc" }
-      }
-      default: {
-        throw Error('Unknown action: ' + action.type);
-      }
-    }
-  }
   useEffect(() => {
     let subscribed = true;
     sanityClient
@@ -42,13 +24,10 @@ export function DataProvider({ children }) {
   }, []);
   return (
     <DataContext.Provider value={birimler}>
-      <DataDispatchContext.Provider value={dispatch}>
-        {children}
-      </DataDispatchContext.Provider>
+      {children}
     </DataContext.Provider>
   )
 }
 
 
 
-const initialData = {} 

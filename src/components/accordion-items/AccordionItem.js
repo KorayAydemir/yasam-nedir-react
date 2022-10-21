@@ -1,4 +1,4 @@
-import React, { useState  } from "react";
+import React, { useState } from "react";
 import { PortableText } from "@portabletext/react";
 import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
@@ -18,14 +18,14 @@ const AccordionItem = (props) => {
   const title = props.title;
   const serializer = {
     block: (props) => {
-      return <> <p className="seperator" style={{ marginTop:"20px", display: "block" }}></p> <p style={{ display: "inline" }}> {props.children} </p> </>
+      return <> <p className="seperator" style={{ marginTop: "20px", display: "block" }}></p> <p style={{ display: "inline" }}> {props.children} </p> </>
     },
     types: {
       latex: (props) => {
         const sep = <div className="seperator" style={{ marginTop: "20px" }}></div>
         const latex = props && props.value.body;
-        const line = props&&props.value && props.value.settings.line
-        if (props.value.settings.line === "newline") {line = "block"}
+        const line = props && props.value && props.value.settings.line
+        if (props.value.settings.line === "newline") { line = "block" }
         const latexValue = String.raw`${latex}`
         const mid = { display: line, textAlign: "center", fontSize: `${props.value.settings.fontSize}px`, }
         const right = { display: line, textAlign: "right", fontSize: `${props.value.settings.fontSize}px` }
@@ -33,7 +33,7 @@ const AccordionItem = (props) => {
         if (props.value.settings.alignment === "right") { latexPos = right }
         else if (props.value.settings.alignment === "center") { latexPos = mid }
         return (<>
-            { props.value.settings.line === "newline" && sep}
+          {props.value.settings.line === "newline" && sep}
           <p style={latexPos} className="latex">
             <Latex>{`$$${latexValue}$$`}</Latex>
           </p>
@@ -177,7 +177,7 @@ const AccordionItem = (props) => {
       >
         <div
           className="new"
-          style={{fontFamily: "Literata" }}
+          style={{ fontFamily: "Literata" }}
         ></div>
 
         <div className="texts">

@@ -23,10 +23,10 @@ const Denemeler = () => {
   useEffect(() => {
     let subscribed = true;
     sanityClient
-      .fetch(`*[_type == "denemeler" ]`)
+      .fetch(`*[_type == "denemeler"]{title, deneme_icon, index}`)
       .then((data) => {
         if (subscribed) {
-          setData(data);
+          setData(data.sort((a, b) => a.index > b.index));
           console.log("denemeler");
         }
       })
@@ -39,7 +39,7 @@ const Denemeler = () => {
 
 
   const content = data && data.map((a) => (<Birim notNumbered={true}
-    key={a.title} icon={urlFor(a.deneme_icon)}>{a.title}</Birim>))
+    key={a.title} icon={a.deneme_icon && urlFor(a.deneme_icon)}>{a.index + ": " + a.title}</Birim>))
   return (
     <div className="site-container">
       <section className={classes.main}>
