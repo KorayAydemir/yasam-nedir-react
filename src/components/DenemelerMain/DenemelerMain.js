@@ -178,7 +178,7 @@ const DenemelerMain = () => {
         <span className={classes.title}>
           {data && data[index].title}
         </span>
-        <div className="unset">
+        <div className="unset" style={{ lineHeight: "2rem" }}>
           <PortableText value={data && data[index].content} components={serializer} />
         </div>
       </div>
