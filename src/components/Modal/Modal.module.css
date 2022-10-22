@@ -20,17 +20,32 @@
   margin-top:-250px;
   z-index:300;
   border-radius: 6px;
-  overflow-y:auto;
+
 }
+
 
 .content{
   padding: 25px 0;
 }
 
+.text{
+    position: absolute;
+    width: auto;
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    margin: 10px 30px 30px 30px;
+    padding: 0px 20px 0px 0px;
+  margin-left:25px;
+  margin-right:20px;
+  font-size:17px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: -2px;
+}
+
 .title span{
   font-size: 25px;
   font-weight:bold;
-  padding: 0px 20px;
+  padding: 0px 25px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -55,13 +70,6 @@
   content: "\00d7"; /* This will render the 'X' */
 }
 
-.text{
-  margin-left:20px;
-  margin-right:20px;
-  margin-top:20px;
-  font-size:17px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
 
 @media only screen and (max-width: 850px) {
 
@@ -76,7 +84,6 @@
   margin-top:-250px;
   z-index:300;
   border-radius: 6px;
-  overflow-y:auto;
 }
 
 }
@@ -94,7 +101,6 @@
   margin-top:-250px;
   z-index:300;
   border-radius: 6px;
-  overflow-y:auto;
 }
 }
 
@@ -111,7 +117,6 @@
   margin-top:-250px;
   z-index:300;
   border-radius: 6px;
-  overflow-y:auto;
 }
 }
 
@@ -128,6 +133,5 @@
   margin-top:-250px;
   z-index:300;
   border-radius: 6px;
-  overflow-y:auto;
 }
 }
