@@ -9,11 +9,6 @@
   top:0;
 }
 
-.unset *:not(.latex *:not(.base)){
-    all:revert;
-    margin:0;
-}
-
 .wrapper{
   position: absolute;
   background-color: #F5F5F5;
@@ -68,3 +63,71 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+@media only screen and (max-width: 850px) {
+
+.wrapper{
+  position: absolute;
+  background-color: #F5F5F5;
+  width: 600px;
+  height: 500px;
+  left:50%;
+  margin-left:-300px;
+  top:40%;
+  margin-top:-250px;
+  z-index:300;
+  border-radius: 6px;
+  overflow-y:auto;
+}
+
+}
+
+@media only screen and (max-width: 650px) {
+
+.wrapper{
+  position: absolute;
+  background-color: #F5F5F5;
+  width: 500px;
+  height: 500px;
+  left:50%;
+  margin-left:-250px;
+  top:40%;
+  margin-top:-250px;
+  z-index:300;
+  border-radius: 6px;
+  overflow-y:auto;
+}
+}
+
+@media only screen and (max-width: 550px) {
+
+.wrapper{
+  position: absolute;
+  background-color: #F5F5F5;
+  width: 400px;
+  height: 500px;
+  left:50%;
+  margin-left:-200px;
+  top:40%;
+  margin-top:-250px;
+  z-index:300;
+  border-radius: 6px;
+  overflow-y:auto;
+}
+}
+
+@media only screen and (max-width: 450px) {
+
+.wrapper{
+  position: absolute;
+  background-color: #F5F5F5;
+  width: 360px;
+  height: 500px;
+  left:50%;
+  margin-left:-180px;
+  top:40%;
+  margin-top:-250px;
+  z-index:300;
+  border-radius: 6px;
+  overflow-y:auto;
+}
+}
