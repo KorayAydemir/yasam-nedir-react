@@ -24,7 +24,7 @@ const AccordionItem = (props) => {
       latex: (props) => {
         const sep = <div className="seperator" style={{ marginTop: "20px" }}></div>
         const latex = props && props.value.body;
-        const line = props && props.value && props.value.settings.line
+        let line = props && props.value && props.value.settings.line
         if (props.value.settings.line === "newline") { line = "block" }
         const latexValue = String.raw`${latex}`
         const mid = { display: line, textAlign: "center", fontSize: `${props.value.settings.fontSize}px`, }

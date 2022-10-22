@@ -44,6 +44,9 @@ export default () =>
             })
             .title('Önizleme'),
         ])),
+      S.listItem().
+        title("Giriş Modal").
+        child(S.document().schemaType("modal").documentId("modal"))
 
     ])
 

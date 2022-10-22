@@ -1,0 +1,70 @@
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.555);
+  z-index: 101;
+  display: none;
+  transition: 0.5s ease;
+  top:0;
+}
+
+.unset *:not(.latex *:not(.base)){
+    all:revert;
+    margin:0;
+}
+
+.wrapper{
+  position: absolute;
+  background-color: #F5F5F5;
+  width: 800px;
+  height: 500px;
+  left:50%;
+  margin-left:-400px;
+  top:40%;
+  margin-top:-250px;
+  z-index:300;
+  border-radius: 6px;
+  overflow-y:auto;
+}
+
+.content{
+  padding: 25px 0;
+}
+
+.title span{
+  font-size: 25px;
+  font-weight:bold;
+  padding: 0px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  border-bottom: 1px solid #E0E0E0;
+  height:40px;
+}
+
+.close{
+  position:relative;
+  float:right;
+  margin-right:20px;
+  cursor:pointer;
+  font-size:2rem;
+  color: gray;
+  font-weight:bold;
+  bottom:6px;
+}
+
+.close:after{
+  display: inline-block;
+  content: "\00d7"; /* This will render the 'X' */
+}
+
+.text{
+  margin-left:20px;
+  margin-right:20px;
+  margin-top:20px;
+  font-size:17px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+

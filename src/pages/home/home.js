@@ -6,7 +6,7 @@ import Button from "../../globals/button/button";
 import octopus from "./images/ahto.png";
 import sanityClient from "../../Client"
 import { PortableText } from "@portabletext/react";
-import Modal from "../../components/Modal"
+import Modal from "../../components/Modal/Modal"
 
 const Home = () => {
   let [paragraph, setParagraph] = useState([]);
@@ -14,11 +14,12 @@ const Home = () => {
     let subscribed = true;
     sanityClient
       .fetch(
-        `*[_type in ["settings"]]`
+        `*[_type in ["settings", "modal"]]`
       )
       .then((data) => {
         if (subscribed) {
           setParagraph(data)
+          console.log(data)
         }
       })
       .catch(console.error);
@@ -30,7 +31,7 @@ const Home = () => {
 
   const serializer = {
     block: (props) => {
-      if (paragraph[0].lineHeight.value) {
+      if (paragraph[1].lineHeight.value) {
         return <p style={{ marginBottom: "20px", lineHeight: paragraph[0].lineHeight.value }}> {props.children} </p>
       }
       else {
@@ -115,13 +116,14 @@ const Home = () => {
   }
   return (
     <div className={classes["bg-container"]}>
+      <Modal data={paragraph[0]} />
 
       <img className={classes.bg} src={bg} alt="background" />
       <div className={classes["octopus-wrapper"]}>
         <img className={classes.octopus} src={octopus} alt="octopus" />
       </div>
       <div className={classes["text-container"]}>
-        {paragraph && paragraph[0] && <PortableText value={paragraph[0].homeContent} components={serializer} />}
+        {paragraph && paragraph[1] && <PortableText value={paragraph[1].homeContent} components={serializer} />}
         <div className={classes.buttons}>
           <Link to="/yasambilim">
             <Button color="#6ab165">YAŞAMBİLİM</Button>

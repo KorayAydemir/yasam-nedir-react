@@ -4,3 +4,10 @@
     margin:0;
 }
 
+.unset2 *:not(.latex *:not(.base)){
+    all:revert;
+    margin:0;
+}
+
+
+
