@@ -10,8 +10,9 @@
 }
 
 .wrapper{
+  color: black;
   position: absolute;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 ;
   width: 800px;
   height: 500px;
   left:50%;
@@ -60,7 +61,7 @@
   margin-right:20px;
   cursor:pointer;
   font-size:2rem;
-  color: gray;
+  color: gray ;
   font-weight:bold;
   bottom:6px;
 }
@@ -75,7 +76,7 @@
 
 .wrapper{
   position: absolute;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 ;
   width: 600px;
   height: 500px;
   left:50%;
@@ -92,7 +93,7 @@
 
 .wrapper{
   position: absolute;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 ;
   width: 500px;
   height: 500px;
   left:50%;
@@ -108,7 +109,7 @@
 
 .wrapper{
   position: absolute;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 ;
   width: 400px;
   height: 600px;
   left:50%;
@@ -124,7 +125,7 @@
 
 .wrapper{
   position: absolute;
-  background-color: #F5F5F5;
+  background-color: #F5F5F5 ;
   width: 360px;
   height: 600px;
   left:50%;
