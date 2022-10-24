@@ -4,14 +4,17 @@ import { createPortal } from "react-dom"
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../../Client";
+import { useContext } from "react"
+import { DataContext } from "../Contexts";
 var Latex = require("react-latex")
 const Modal = (props) => {
+  const data = useContext(DataContext)
   const builder = imageUrlBuilder(sanityClient);
   function urlFor(source) {
     return builder.image(source);
   }
 
-  const lineHeight = `${props.data && props.data.lineHeight && props.data.lineHeight.value}rem`
+  const lineHeight = `${data[0] && data[0].lineHeight && data[0].lineHeight.value}rem`
   const serializer = {
     block: (props) => {
       return <> <p className="seperator" style={{ marginTop: "20px", display: "block" }}></p> <p style={{ display: "inline" }}> {props.children} </p> </>
@@ -171,11 +174,11 @@ const Modal = (props) => {
     <div className={classes.wrapper}>
       <div className={classes.content}>
         <div className={classes.title}>
-          <span>{props.data && props.data.modalTitle}</span>
+          <span>{data[0] && data[0].modalTitle}</span>
           <div className={classes.close} onClick={() => { setIsModalHidden(true) }}></div>
         </div>
         <div style={{ lineHeight: lineHeight }} className={`${classes.text} unset2`} >
-          {props.data && <PortableText value={props.data.modalContent} components={serializer} />}
+          {data[0] && <PortableText value={data[0].modalContent} components={serializer} />}
         </div>
       </div>
     </div>)

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Birimler from "../../components/birimler";
-import sanityClient from "../../Client";
-import Navigation from "../../components/Navigation/Navigation"
+import Modal from "../../components/Modal/Modal";
 const Yasambilim = () => {
   const { setTitle } = useOutletContext();
 
@@ -23,13 +22,11 @@ const Yasambilim = () => {
       .then((data) => setCategories(data))
       .catch(console.error);
   }, []); dont make unnecessary requests*/
-  const getData = data => {
-    console.log(data)
-  }
   return (
     <>
+      <Modal />
       {/*categories && categories[0].title*/}
-      <Birimler data={getData} />
+      <Birimler />
     </>
   );
 };

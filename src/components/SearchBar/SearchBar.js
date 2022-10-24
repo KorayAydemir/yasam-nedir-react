@@ -7,12 +7,15 @@ const SearchBar = (props) => {
   const dataContext = useContext(DataContext)
   const data1 = dataContext && [...new Set(dataContext.map(item => item.birim_title))];
   const data2 = dataContext && [...new Set(dataContext.map(item => ([item.birim_no, item.bolum_no, item.title])))];
+
+  data1.shift()
+  data2.shift()
   const activeClassName = classes.active;
   const inactiveClassName = classes.inactive;
   const [isNavOpen, setIsNavOpen] = useState({})
 
   const [filteredData, setFilteredData] = useState([])
-  useEffect(() => { setFilteredData(data2) }, [dataContext])
+  useEffect(() => { setFilteredData(data2); }, [dataContext])
 
   const handleFilter = (e) => {
     const searchWord = e.target.value

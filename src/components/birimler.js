@@ -1,8 +1,6 @@
 import classes from "./birimler.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Birim from "./Birim";
-import { useState } from "react";
-import { useEffect } from "react";
 import sanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import { DataContext } from "./Contexts"
@@ -12,8 +10,8 @@ import Navigation from "./Navigation/Navigation"
 
 const Birimler = () => {
   const birimler = useContext(DataContext)
-
   const builder = imageUrlBuilder(sanityClient);
+
 
   function urlFor(source) {
     return builder.image(source);
@@ -26,6 +24,7 @@ const Birimler = () => {
     return !duplicate;
   });
 
+  filteredArr.shift()
 
   return (
     <>

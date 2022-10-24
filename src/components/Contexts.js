@@ -5,11 +5,11 @@ export const DataContext = createContext(null)
 
 
 export function DataProvider({ children }) {
-  const [birimler, setBirimler] = useState(null)
+  const [birimler, setBirimler] = useState([])
   useEffect(() => {
     let subscribed = true;
     sanityClient
-      .fetch(`*[_type == "Bolum" ]{bolum_no, title, "birim_title": related_birim->title, "birim_no": related_birim-> birim_no, "birim_icon": related_birim->birim_icon, }`)
+      .fetch(`*[_type in ["Bolum", "modal"] ]{lineHeight,modalTitle, modalContent, bolum_no, title, "birim_title": related_birim->title, "birim_no": related_birim-> birim_no, "birim_icon": related_birim->birim_icon, }`)
       .then((myData) => {
         if (subscribed) {
           setBirimler(myData.sort((a, b) => a.birim_no - b.birim_no));
