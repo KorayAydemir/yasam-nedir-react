@@ -13,6 +13,7 @@ import Chapters from "./components/chapters/Chapters";
 import Header from "./components/header";
 import Sections from "./pages/sections/sections";
 import { DataProvider } from "./components/Contexts"
+import { TooltipProvider } from "./components/TooltipContext"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -37,11 +38,13 @@ function App() {
               path="/yasambilim/:chapterId/:sectionId"
               element={<Sections />}
             />
-
             <Route path="/evrim" element={<Evrim />} />
-            <Route path="/evrim/:evrimName" element={<EvrimMain />} />
+            {/*tomorrow try ot add route evrim into evrim mains element={} so it fetches when entered evrim instead of fetching on every new evrimMain route */}
+            <Route path="/evrim/:evrimName" element={
+              <TooltipProvider><EvrimMain /></TooltipProvider>} />
             <Route path="/denemeler" element={<Denemeler />} />
-            <Route path="/denemeler/:denemeName" element={<DenemelerMain />} />
+            <Route path="/denemeler/:denemeName" element={
+              <TooltipProvider><DenemelerMain /></TooltipProvider>} />
             <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
           </Route>
         </Routes>

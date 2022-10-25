@@ -1,11 +1,13 @@
 import classes from "./DenemelerMain.module.css"
 import { useOutletContext, useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import sanityClient from "../../Client"
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
+import { TooltipContext } from "../TooltipContext"
 
 const DenemelerMain = () => {
+  const tooltips = useContext(TooltipContext)
   var Latex = require("react-latex")
   const { denemeName } = useParams();
   const { setTitle } = useOutletContext();
@@ -172,6 +174,28 @@ const DenemelerMain = () => {
       },
     },
   };
+
+  for (const key of document.getElementsByClassName("texts")) {
+    key.hidden = true;
+  }
+
+  if (tooltips) {
+    let k = 0;
+    for (const key of document.getElementsByClassName("texts")) {
+      let temp = key.innerHTML;
+
+      tooltips.forEach((word) => {
+        temp = temp.replaceAll(
+          ` ${word[0]} `,
+          ` <span class="tooltip" style="font-size: inherit" data-text='${word[1]}'>${word[0]}</span> `
+        );
+      });
+      document.getElementsByClassName("new")[k].innerHTML = temp;
+
+      k = k + 1;
+    }
+  }
+
   return (
     <div className="site-container">
       <div className={classes.wrapper}>
@@ -179,7 +203,10 @@ const DenemelerMain = () => {
           {data && data[index].title}
         </span>
         <div className="unset" style={{ lineHeight: "2rem" }}>
-          <PortableText value={data && data[index].content} components={serializer} />
+          <div className="new"></div>
+          <div className="texts">
+            <PortableText value={data && data[index].content} components={serializer} />
+          </div>
         </div>
       </div>
     </div>

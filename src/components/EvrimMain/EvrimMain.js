@@ -1,10 +1,12 @@
 import classes from "./EvrimMain.module.css"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import sanityClient from "../../Client"
 import { useOutletContext, useParams } from "react-router-dom"
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
+import { TooltipContext } from "../TooltipContext"
 const EvrimMain = () => {
+  const tooltips = useContext(TooltipContext)
   var Latex = require("react-latex")
   const { evrimName } = useParams();
   const { setTitle } = useOutletContext();
@@ -171,6 +173,28 @@ const EvrimMain = () => {
       },
     },
   };
+
+  for (const key of document.getElementsByClassName("texts")) {
+    key.hidden = true;
+  }
+
+  if (tooltips) {
+    let k = 0;
+    for (const key of document.getElementsByClassName("texts")) {
+      let temp = key.innerHTML;
+
+      tooltips.forEach((word) => {
+        temp = temp.replaceAll(
+          ` ${word[0]} `,
+          ` <span class="tooltip" style="font-size: inherit" data-text='${word[1]}'>${word[0]}</span> `
+        );
+      });
+      document.getElementsByClassName("new")[k].innerHTML = temp;
+
+      k = k + 1;
+    }
+  }
+
   return (
     <div className="site-container">
       <div className={classes.wrapper}>
@@ -178,7 +202,10 @@ const EvrimMain = () => {
           {data && data[index].title}
         </span>
         <div className="unset">
-          <PortableText value={data && data[index].content} components={serializer} />
+          <div className="new"></div>
+          <div className="texts">
+            <PortableText value={data && data[index].content} components={serializer} />
+          </div>
         </div>
       </div>
     </div>
