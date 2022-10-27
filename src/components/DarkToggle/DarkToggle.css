@@ -1,5 +1,5 @@
 :root {
-  --font-color: #333;
+  --font-color:black; 
   --link-color: cornflowerblue;
   --header-bottom-background: rgba(247, 247, 247, 1);
   --header-menu-span: #444;
@@ -14,6 +14,7 @@
   --scrollbar-background: #f1f1f1;
   --navigation-text-color: #3D7D97;
   --header-background: #fff;
+  --black-text: black;
 }
 
 /* 2 */
@@ -34,6 +35,7 @@
   --scrollbar-background: #202324;
   --navigation-text-color: cornflowerblue;
   --header-background: #181a1b;
+  --black-text: #e8e6e3
 }
 
 /* 3 */
