@@ -10,12 +10,13 @@ const SearchBar = (props) => {
 
   data1.shift()
   data2.shift()
+  const data3 = data2.sort((a, b) => a[1] > b[1])
   const activeClassName = classes.active;
   const inactiveClassName = classes.inactive;
   const [isNavOpen, setIsNavOpen] = useState({})
 
   const [filteredData, setFilteredData] = useState([])
-  useEffect(() => { setFilteredData(data2); }, [dataContext])
+  useEffect(() => { setFilteredData(data3); }, [dataContext])
 
   const handleFilter = (e) => {
     const searchWord = e.target.value
@@ -35,7 +36,7 @@ const SearchBar = (props) => {
       }
       )
     }
-    const newFilter = data2.filter((value) => {
+    const newFilter = data3.filter((value) => {
       return value[2].toLowerCase().includes(searchWord.toLowerCase());
     })
 

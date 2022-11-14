@@ -3,8 +3,6 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar"
 
 const Navigation = (props) => {
-
-
   const [isMenuShown, setIsMenuShown] = useState(false)
 
   const Backdrop = (props) => {
