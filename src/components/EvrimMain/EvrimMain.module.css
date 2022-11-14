@@ -16,3 +16,8 @@
   color: var(--font-color-title);
   text-align:center;
 }
+
+.image {
+max-width: 100% !important;
+  display: block !important;
+}
