@@ -23,7 +23,7 @@ const DenemelerMain = () => {
       .fetch(`*[_type == "denemeler"]{content, title, index}`)
       .then((data) => {
         if (subscribed) {
-          setData(data.sort((a, b) => a.index > b.index))
+          setData(data.sort((a, b) => a.index - b.index))
           console.log("evrim");
         }
       })

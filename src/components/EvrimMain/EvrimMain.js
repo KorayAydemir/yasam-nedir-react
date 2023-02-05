@@ -22,7 +22,7 @@ const EvrimMain = () => {
       .fetch(`*[_type == "evrim"]{content, title}`)
       .then((data) => {
         if (subscribed) {
-          setData(data.sort((a, b) => a.index > b.index));
+          setData(data.sort((a, b) => a.index - b.index));
           console.log("evrim");
         }
       })

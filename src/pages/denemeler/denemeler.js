@@ -26,7 +26,7 @@ const Denemeler = () => {
       .fetch(`*[_type == "denemeler"]{title, deneme_icon, index}`)
       .then((data) => {
         if (subscribed) {
-          setData(data.sort((a, b) => a.index > b.index));
+          setData(data);
           console.log("denemeler");
         }
       })
@@ -38,8 +38,15 @@ const Denemeler = () => {
   }, []);
 
 
-  const content = data && data.map((a) => (<Birim notNumbered={true}
-    key={a.title} icon={a.deneme_icon && urlFor(a.deneme_icon)}>{a.index + ": " + a.title}</Birim>))
+
+  console.log(data)
+  const content = data?.sort((a, b) => a.index - b.index)?.map((a) => (
+    <Birim notNumbered={true}
+      key={a.title} icon={a.deneme_icon && urlFor(a.deneme_icon)}>
+      {a.index + ": " + a.title}
+    </Birim>
+  ))
+
   return (
     <div className="site-container">
       <section className={classes.main}>

@@ -19,7 +19,7 @@ const Evrim = () => {
       .fetch(`*[_type == "evrim"]{evrim_icon, title, index}`)
       .then((data) => {
         if (subscribed) {
-          setData(data.sort((a, b) => a.index > b.index))
+          setData(data)
           console.log("evrim");
         }
       })
@@ -32,7 +32,7 @@ const Evrim = () => {
   useState(() => {
     setTitle("EVRİM KURAMI");
   }, []);
-  const content = data && data.map((a) => <Birim key={a.title} notNumbered={true} icon={a.evrim_icon && urlFor(a.evrim_icon)}>{a.index + ": " + a.title}</Birim>)
+  const content = data && data?.sort((a, b) => a.index - b.index)?.map((a) => <Birim key={a.title} notNumbered={true} icon={a.evrim_icon && urlFor(a.evrim_icon)}>{a.index + ": " + a.title}</Birim>)
   return (
     <div className="site-container">
       <section className={classes.main}>
