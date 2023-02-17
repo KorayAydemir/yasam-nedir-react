@@ -69,6 +69,16 @@ const Header = () => {
                   <span>DENEMELER</span>
                 </li>
               </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? activeClassName : inactiveClassName
+                }
+                to="/neden"
+              >
+                <li className={classes["menu-item-3"]}>
+                  <span>NEDEN</span>
+                </li>
+              </NavLink>
             </ul>
           </nav>
         </div>

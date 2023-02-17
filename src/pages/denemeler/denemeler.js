@@ -40,6 +40,7 @@ const Denemeler = () => {
 
 
   console.log(data)
+
   const content = data?.sort((a, b) => a.index - b.index)?.map((a) => (
     <Birim notNumbered={true}
       key={a.title} icon={a.deneme_icon && urlFor(a.deneme_icon)}>

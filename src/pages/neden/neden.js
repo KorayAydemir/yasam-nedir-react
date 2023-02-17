@@ -1,21 +1,25 @@
-import classes from "./Modal.module.css"
-import { useState } from "react"
-import { createPortal } from "react-dom"
+import classes from "./neden.module.css"
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../../Client";
 import { useContext } from "react"
-import { DataContext } from "../Contexts";
+import { useOutletContext } from "react-router-dom"
+import { DataContext } from "../../components/Contexts";
 var Latex = require("react-latex")
 
-const Modal = (props) => {
+const Neden = () => {
   const data = useContext(DataContext)
   const builder = imageUrlBuilder(sanityClient);
+  const { setTitle } = useOutletContext();
+
   function urlFor(source) {
     return builder.image(source);
   }
 
   const lineHeight = `${data[0] && data[0].lineHeight && data[0].lineHeight.value}rem`
+
+  setTitle(data[0] && data[0].modalTitle)
+
   const serializer = {
     block: (props) => {
       return <> <p className="seperator" style={{ marginTop: "20px", display: "block" }}></p> <p style={{ display: "inline" }}> {props.children} </p> </>
@@ -156,27 +160,12 @@ const Modal = (props) => {
       },
     },
   };
-  const [isModalHidden, setIsModalHidden] = useState(false)
-  const Backdrop = (props) => {
-    let displayState = props.width === "0%" ? "none" : "unset";
-    return (
-      <div
-        onClick={() => {
-          props.onClick();
-        }}
-        className={classes.backdrop}
-        style={{ display: `${displayState}` }}
-      >
-      </div>
-    );
-  };
-  const modalRootEl = document.getElementById("modal-root")
+
   const content = (
     <div className={classes.wrapper}>
       <div className={classes.content}>
         <div className={classes.title}>
           <span>{data[0] && data[0].modalTitle}</span>
-          <div className={classes.close} onClick={() => { setIsModalHidden(true) }}></div>
         </div>
         <div style={{ lineHeight: lineHeight }} className={`${classes.text} unset2`} >
           {data[0] && <PortableText value={data[0].modalContent} components={serializer} />}
@@ -184,14 +173,19 @@ const Modal = (props) => {
       </div>
     </div>)
 
-  return (createPortal(
-    <div>
-      {!isModalHidden && <Backdrop onClick={() => { setIsModalHidden(true) }} />}
-      {!isModalHidden && content}
-    </div>,
-    modalRootEl
-  )
+  return (
+    <div className="site-container">
+      <div className={classes.wrapper}>
+        <span className={classes.title}>
+          <span>{data[0] && data[0].modalTitle}</span>
+        </span>
+        <div className="unset" style={{ lineHeight: "2rem" }}>
+          <div style={{ lineHeight: lineHeight }} className={`${classes.text} unset2`} >
+            {data[0] && <PortableText value={data[0].modalContent} components={serializer} />}
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
-
-export default Modal
+export default Neden

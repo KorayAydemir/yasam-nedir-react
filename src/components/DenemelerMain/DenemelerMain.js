@@ -13,10 +13,24 @@ const DenemelerMain = () => {
   const { setTitle } = useOutletContext();
   const [data, setData] = useState(null)
   const builder = imageUrlBuilder(sanityClient);
-  const index = denemeName[0] - 1
+  //const [index, setIndex] = useState(0);
+  let index = denemeName[0] - 1
+
+  if (hasNumber(denemeName[1])) {
+    index = denemeName.slice(0, 2) - 1
+  } else {
+    index = denemeName[0] - 1
+  }
+
+  function hasNumber(myString) {
+    return /\d/.test(myString);
+  }
+
   function urlFor(source) {
     return builder.image(source);
   }
+
+  console.log(index)
   useEffect(() => {
     let subscribed = true;
     sanityClient

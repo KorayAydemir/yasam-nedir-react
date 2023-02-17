@@ -14,6 +14,7 @@ import Header from "./components/header";
 import Sections from "./pages/sections/sections";
 import { DataProvider } from "./components/Contexts"
 import { TooltipProvider } from "./components/TooltipContext"
+import Neden from "./pages/neden/neden"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,7 +23,6 @@ import { TooltipProvider } from "./components/TooltipContext"
 //
 
 function App() {
-
   return (
     <DataProvider>
       <div>
@@ -43,6 +43,7 @@ function App() {
             <Route path="/denemeler" element={<Denemeler />} />
             <Route path="/denemeler/:denemeName" element={
               <TooltipProvider><DenemelerMain /></TooltipProvider>} />
+            <Route path="/neden" element={<Neden />} />
             <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
           </Route>
         </Routes>

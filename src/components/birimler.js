@@ -1,5 +1,5 @@
 import classes from "./birimler.module.css";
-import React, { useEffect } from "react";
+import React from "react";
 import Birim from "./Birim";
 import sanityClient from "../Client";
 import imageUrlBuilder from "@sanity/image-url";

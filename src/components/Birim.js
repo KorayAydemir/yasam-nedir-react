@@ -5,6 +5,7 @@ import classes from "./Birim.module.css";
 const Birim = (props) => {
   if (props.notNumbered) {
     let slug = `${props.children}`.toLowerCase().split(" ").join("-")
+    { console.log() }
     return (
       <Link
         to={slug}

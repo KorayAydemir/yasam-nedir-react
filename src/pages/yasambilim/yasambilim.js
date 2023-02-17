@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import Birimler from "../../components/birimler";
-import Modal from "../../components/Modal/Modal";
 const Yasambilim = () => {
   const { setTitle } = useOutletContext();
 
@@ -24,7 +23,6 @@ const Yasambilim = () => {
   }, []); dont make unnecessary requests*/
   return (
     <>
-      <Modal />
       {/*categories && categories[0].title*/}
       <Birimler />
     </>
