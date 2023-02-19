@@ -38,11 +38,9 @@ const DenemelerMain = () => {
       .then((data) => {
         if (subscribed) {
           setData(data.sort((a, b) => a.index - b.index))
-          console.log("evrim");
         }
       })
       .catch(console.error);
-    console.log("evrim out");
     return () => {
       subscribed = false;
     };

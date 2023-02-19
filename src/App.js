@@ -26,7 +26,6 @@ function App() {
   return (
     <DataProvider>
       <div>
-        {console.log(window.location.pathname)}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Header />}>
