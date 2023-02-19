@@ -65,6 +65,16 @@ const SideNav = (props) => {
                 <span onClick={props.closeNav}>DENEMELER</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? activeClassName : inactiveClassName
+                }
+                to="/neden"
+              >
+                <span onClick={props.closeNav}>NEDEN ?</span>
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
