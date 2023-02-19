@@ -2,15 +2,28 @@ import classes from "./neden.module.css"
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "../../Client";
-import { useContext } from "react"
+import { useEffect, useState } from "react"
 import { useOutletContext } from "react-router-dom"
-import { DataContext } from "../../components/Contexts";
 var Latex = require("react-latex")
 
 const Neden = () => {
-  const data = useContext(DataContext)
+  const [data, setData] = useState("")
   const builder = imageUrlBuilder(sanityClient);
   const { setTitle } = useOutletContext();
+  useEffect(() => {
+    let subscribed = true;
+    sanityClient
+      .fetch(`*[_type in ["fourth"]]`)
+      .then((myData) => {
+        if (subscribed) {
+          setData(myData);
+        }
+      })
+      .catch(console.error);
+    return () => {
+      subscribed = false;
+    };
+  }, []);
 
   function urlFor(source) {
     return builder.image(source);
@@ -18,7 +31,7 @@ const Neden = () => {
 
   const lineHeight = `${data[0] && data[0].lineHeight && data[0].lineHeight.value}rem`
 
-  setTitle(data[0] && data[0].modalTitle)
+  setTitle(data[0] && data[0].title)
 
   const serializer = {
     block: (props) => {
@@ -165,10 +178,10 @@ const Neden = () => {
     <div className={classes.wrapper}>
       <div className={classes.content}>
         <div className={classes.title}>
-          <span>{data[0] && data[0].modalTitle}</span>
+          <span>{data[0] && data[0].title}</span>
         </div>
         <div style={{ lineHeight: lineHeight }} className={`${classes.text} unset2`} >
-          {data[0] && <PortableText value={data[0].modalContent} components={serializer} />}
+          {data[0] && <PortableText value={data[0].content} components={serializer} />}
         </div>
       </div>
     </div>)
@@ -177,11 +190,11 @@ const Neden = () => {
     <div className="site-container">
       <div className={classes.wrapper}>
         <span className={classes.title}>
-          <span>{data[0] && data[0].modalTitle}</span>
+          <span>{data[0] && data[0].title}</span>
         </span>
         <div className="unset" style={{ lineHeight: "2rem" }}>
           <div style={{ lineHeight: lineHeight }} className={`${classes.text} unset2`} >
-            {data[0] && <PortableText value={data[0].modalContent} components={serializer} />}
+            {data[0] && <PortableText value={data[0].content} components={serializer} />}
           </div>
         </div>
       </div>

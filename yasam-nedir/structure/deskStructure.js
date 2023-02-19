@@ -46,7 +46,10 @@ export default () =>
         ])),
       S.listItem().
         title("Giriş Modal").
-        child(S.document().schemaType("modal").documentId("modal"))
+        child(S.document().schemaType("modal").documentId("modal")),
+      S.listItem().
+        title("Neden ?").
+        child(S.document().schemaType("fourth").documentId("fourth"))
 
     ])
 
