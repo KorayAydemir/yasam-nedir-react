@@ -4,7 +4,6 @@ import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import classes from "./AccordionItem.module.css";
 import "./AccordionItem2.css";
-import { Helmet } from "react-helmet";
 
 var Latex = require("react-latex");
 const AccordionItem = (props) => {
