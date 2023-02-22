@@ -4,7 +4,8 @@ import { useContext, useEffect, useState } from "react"
 import sanityClient from "../../Client"
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
-import { TooltipContext } from "../TooltipContext"
+import { TooltipContext } from "../TooltipContext";
+import { Helmet } from "react-helmet";
 
 const DenemelerMain = () => {
   const tooltips = useContext(TooltipContext)
@@ -210,6 +211,10 @@ const DenemelerMain = () => {
 
   return (
     <div className="site-container">
+      <Helmet>
+        <meta charSet="utf-8" />
+        {data && <title>{`Yaşam Nedir? - ` + data[index].title}</title>}
+      </Helmet>
       <div className={classes.wrapper}>
         <span className={classes.title}>
           {data && data[index].title}

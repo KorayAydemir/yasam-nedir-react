@@ -6,6 +6,7 @@ import classes from "./sections.module.css"
 import sanityClient from "../../Client";
 
 import Navigation from "../../components/Navigation/Navigation"
+import { Helmet } from "react-helmet";
 
 const Sections = () => {
   const [altBolum, setAltBolum] = useState([]);
@@ -44,12 +45,13 @@ const Sections = () => {
   //altBolum && console.log(altBolum);
   // wordData && console.log(wordData);
   // tesjdt
-  if (altBolum && altBolum[0]) {
-    const content =
-      altBolum[0] &&
-      altBolum
-        .filter((a) => a.bolum_no === parseInt(currentSection))
-        .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
+  const content =
+    altBolum && altBolum[0] &&
+    altBolum
+      .filter((a) => a.bolum_no === parseInt(currentSection))
+      .sort((a, b) => a.alt_bolum_no - b.alt_bolum_no)[0]
+
+  if (content) {
     setTitle(
       `BİRİM ${currentChapter}: ${content.birim_title} / BÖLÜM ${currentSection}: ${content.title}`
     );
@@ -80,7 +82,7 @@ const Sections = () => {
       altBolum.filter((a) => a.bolum_no === parseInt(currentSection))[0]
         .alt_bolumler
     );*/
-  const content =
+  const accordionContent =
     altBolum[0] &&
     altBolum
       .filter((a) => a.bolum_no === parseInt(currentSection))
@@ -105,9 +107,12 @@ const Sections = () => {
   }, [altBolum])
   return (
     <>
+      <Helmet>
+        {content && <title>{`Yaşam Nedir? - ` + content.title}</title>}
+      </Helmet>
       <Navigation />
       <div className={`site-container ${classes.accordions}`} style={{ zIndex: "100", marginTop: "10px" }}>
-        {content}
+        {accordionContent}
       </div>
     </>
   );

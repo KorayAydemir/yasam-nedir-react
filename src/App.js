@@ -15,6 +15,7 @@ import Sections from "./pages/sections/sections";
 import { DataProvider } from "./components/Contexts"
 import { TooltipProvider } from "./components/TooltipContext"
 import Neden from "./pages/neden/neden"
+import { Helmet } from "react-helmet";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,6 +26,9 @@ import Neden from "./pages/neden/neden"
 function App() {
   return (
     <DataProvider>
+      <Helmet>
+        <meta name="google-site-verification" content="UlSjM426MCz3TR9zwsy83SjXqFMnKaQs4CPnL4jbiG8" />
+        <meta charSet="utf8" /><title>{`Yaşam Nedir?`}</title></Helmet>
       <div>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -45,6 +49,7 @@ function App() {
             <Route path="/neden" element={<Neden />} />
             <Route path="*" element={<div className="site-container" style={{ fontSize: "20px", marginTop: "20px" }}>Bu sayfa bulunamıyor!</div>} />
           </Route>
+          <Route path="/google0adb34ee90328952.html" element={<div>google</div>}></Route>
         </Routes>
       </div >
     </DataProvider>

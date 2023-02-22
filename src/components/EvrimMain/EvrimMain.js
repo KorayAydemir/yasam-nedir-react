@@ -5,6 +5,8 @@ import { useOutletContext, useParams } from "react-router-dom";
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import { TooltipContext } from "../TooltipContext";
+import { Helmet } from "react-helmet";
+
 const EvrimMain = () => {
   const tooltips = useContext(TooltipContext);
   var Latex = require("react-latex");
@@ -240,6 +242,10 @@ const EvrimMain = () => {
 
   return (
     <div className="site-container">
+      <Helmet>
+        <meta charSet="utf-8" />
+        {data && <title>{`Yaşam Nedir? - ` + data[index].title}</title>}
+      </Helmet>
       <div className={classes.wrapper}>
         <span className={classes.title}>{data && data[index].title}</span>
         <div className="unset" style={{ lineHeight: "2rem" }}>

@@ -4,16 +4,17 @@ import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import classes from "./AccordionItem.module.css";
 import "./AccordionItem2.css";
+import { Helmet } from "react-helmet";
 
 var Latex = require("react-latex");
 const AccordionItem = (props) => {
-  //console.log("h");
+
   const [isActive, setIsActive] = useState(false);
   const builder = imageUrlBuilder(sanityClient);
   function urlFor(source) {
     return builder.image(source);
   }
-  //  console.log(props.value);
+
   const title = props.title;
   const serializer = {
     block: (props) => {
@@ -223,7 +224,7 @@ const AccordionItem = (props) => {
           <PortableText value={props.value} components={serializer} />
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 export default AccordionItem;
