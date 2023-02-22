@@ -28,7 +28,15 @@ function App() {
     <DataProvider>
       <Helmet>
         <meta name="google-site-verification" content="UlSjM426MCz3TR9zwsy83SjXqFMnKaQs4CPnL4jbiG8" />
-        <meta charSet="utf8" /><title>{`Yaşam Nedir?`}</title></Helmet>
+        <meta charSet="utf8" />
+        <title>{`Yaşam Nedir?`}</title></Helmet>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:site" content="@yasamnedir" />
+      <meta name="twitter:title" content="Yaşam Nedir?" />
+      <meta name="twitter:description" content="
+Yaşam nedir? Kimse bilmez, ancak yaşamın ne olduğunu sorgulamadığımız her an boşa geçirilmiştir!
+"/>
+      <meta name="twitter:image" content="https://yasamnedir.com/static/media/ahto.07ca7dc83b1e91eea9e5.png" />
       <div>
         <Routes>
           <Route path="/" element={<Home />} />

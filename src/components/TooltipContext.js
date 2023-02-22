@@ -18,16 +18,14 @@ export function TooltipProvider({ children }) {
             return (word = word.split("="));
           })
           setTooltips(newWordData)
-          console.log("birimler");
         }
       })
       .catch(console.error);
-    console.log("birimler out");
     return () => {
       subscribed = false;
     };
   }, []);
-  console.log(tooltips)
+
   return (
     <TooltipContext.Provider value={tooltips}>
       {children}

@@ -31,7 +31,6 @@ const DenemelerMain = () => {
     return builder.image(source);
   }
 
-  console.log(index)
   useEffect(() => {
     let subscribed = true;
     sanityClient
@@ -209,9 +208,32 @@ const DenemelerMain = () => {
     }
   }
 
+
+  function toPlainText(blocks) {
+    return blocks
+      // loop through each block
+      .map(block => {
+        // if it's not a text block with children, 
+        // return nothing
+        if (block._type !== 'block' || !block.children) {
+          return ''
+        }
+        // loop through the children spans, and join the
+        // text strings
+        return block.children.map(child => child.text).join('')
+      })
+      // join the paragraphs leaving split by two linebreaks
+      .join('\n\n')
+  }
+
+  const desc = data && toPlainText(data[index].content).slice(0, 180).trim() + "...";
   return (
     <div className="site-container">
       <Helmet>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@yasamnedir" />
+        {data && <meta name="twitter:title" content={`${data[index].title} - Yaşam Nedir?`} />}
+        {data && <meta name="twitter:description" content={desc} />}
         <meta charSet="utf-8" />
         {data && <title>{`Yaşam Nedir? - ` + data[index].title}</title>}
       </Helmet>
