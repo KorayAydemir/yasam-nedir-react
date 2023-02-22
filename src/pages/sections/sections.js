@@ -108,7 +108,7 @@ const Sections = () => {
   return (
     <>
       <Helmet>
-        {content && <title>{`Yaşam Nedir? - ` + content.title}</title>}
+        {content && <title>{content.title + ` - Yaşam Nedir?`}</title>}
       </Helmet>
       <Navigation />
       <div className={`site-container ${classes.accordions}`} style={{ zIndex: "100", marginTop: "10px" }}>

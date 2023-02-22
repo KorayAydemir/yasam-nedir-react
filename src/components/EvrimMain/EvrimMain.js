@@ -244,7 +244,7 @@ const EvrimMain = () => {
     <div className="site-container">
       <Helmet>
         <meta charSet="utf-8" />
-        {data && <title>{`Yaşam Nedir? - ` + data[index].title}</title>}
+        {data && <title>{data[index].title + ` - Yaşam Nedir?`}</title>}
       </Helmet>
       <div className={classes.wrapper}>
         <span className={classes.title}>{data && data[index].title}</span>
