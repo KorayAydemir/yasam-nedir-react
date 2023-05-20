@@ -1,25 +1,25 @@
-
 .wrapper {
-  margin-top: 10px;
-  font-size: 13pt;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  line-height: 2.8rem;
-  font-family: "Literata", serif;
-  padding-bottom:60px;
+    margin-top: 10px;
+    font-size: 13pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 2.8rem;
+    font-family: "Literata", serif;
+    padding-bottom: 60px;
+    min-height: 150vh;
 }
 
-.image{
-max-width: 100% !important;
-  display: block !important;
+.image {
+    max-width: 100% !important;
+    display: block !important;
 }
 
 .title {
-  color:black;
-  font-weight: bold;
-  border-bottom: 2px solid var(--accordion-border-bottom);
-  cursor: pointer;
-  color: var(--font-color-title);
-  text-align:center;
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid var(--accordion-border-bottom);
+    cursor: pointer;
+    color: var(--font-color-title);
+    text-align: center;
 }
