@@ -1,23 +1,24 @@
 .wrapper {
-  margin-top: 10px;
-  font-size: 13pt;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-family: "Literata", serif;
-  line-height: 2.8rem;
-  padding-bottom:60px
+    margin-top: 10px;
+    font-size: 13pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: "Literata", serif;
+    line-height: 2.8rem;
+    padding-bottom: 60px;
+    min-height: 150vh;
 }
 
 .title {
-  font-weight: bold;
-  border-bottom: 2px solid var(--accordion-border-bottom);
-  cursor: pointer;
-  color: var(--font-color-title);
-  text-align:center;
+    font-weight: bold;
+    border-bottom: 2px solid var(--accordion-border-bottom);
+    cursor: pointer;
+    color: var(--font-color-title);
+    text-align: center;
 }
 
 .image {
-max-width: 100% !important;
-  display: block !important;
+    max-width: 100% !important;
+    display: block !important;
 }

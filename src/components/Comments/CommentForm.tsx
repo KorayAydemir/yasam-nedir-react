@@ -191,7 +191,7 @@ export const CommentForm = ({ post }: any) => {
                 <input
                     value="Yorumu Gönder"
                     type="submit"
-                    className="focus:shadow-outline text-black rounded bg-[color:var(--link-color)] px-4 py-2 font-bold text-white shadow hover:bg-purple-400 focus:outline-none"
+                    className="focus:shadow-outline text-black rounded bg-[color:var(--link-color)] px-4 py-2 font-bold shadow hover:bg-purple-400 focus:outline-none"
                 />
             </form>
         </>

@@ -182,7 +182,7 @@ export const ReplyForm = ({ _id, postId }: { _id: string; postId: string }) => {
                 <input
                     value="Yanıtı Gönder"
                     type="submit"
-                    className="focus:shadow-outline text-black rounded bg-[color:var(--link-color)] px-4 py-2 font-bold text-white shadow hover:bg-purple-400 focus:outline-none"
+                    className="focus:shadow-outline text-black rounded bg-[color:var(--link-color)] px-4 py-2 font-bold shadow hover:bg-purple-400 focus:outline-none"
                 />
             </form>
         </>
