@@ -35,10 +35,10 @@ export const Comments = ({
 
     return (
         <>
-            <h2 className="mb-4 mt-10 text-4xl leading-tight lg:text-6xl">
-                Comments:
+            <h2 className="mb-4 font-sans mt-10 text-4xl leading-tight lg:text-6xl">
+                Yorumlar:
             </h2>
-            <ul>
+            <ul className="font-sans">
                 {comments?.map(
                     ({
                         _id,

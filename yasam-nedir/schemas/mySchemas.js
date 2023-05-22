@@ -1290,7 +1290,7 @@ export const mySchemas = [
     {
         name: "comment",
         type: "document",
-        title: "Comment",
+        title: "Yorumlar",
         fields: [
             {
                 name: "name",

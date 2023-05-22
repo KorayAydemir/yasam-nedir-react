@@ -26,7 +26,7 @@ const DenemelerMain = () => {
     const { denemeName } = useParams();
     const { setTitle } = useOutletContext();
     const [data, setData] = useState(null);
-    const [comments, setComments] = useState(undefined);
+    const [comments, setComments] = useState(null);
     const builder = imageUrlBuilder(sanityClient);
     //const [index, setIndex] = useState(0);
     let index = denemeName[0] - 1;
@@ -292,25 +292,6 @@ const DenemelerMain = () => {
     }
 
     useEffect(() => {
-        let subscribed = true;
-        console.log("ye");
-        if (isVisible && !comments) {
-            console.log("yo");
-            sanityClient
-                .fetch(`{'comments': *[_type == "comment"]}`)
-                .then((commentData) => {
-                    if (subscribed) {
-                        setComments(commentData.comments);
-                    }
-                })
-                .catch(console.error);
-        }
-        return () => {
-            subscribed = false;
-        };
-    }, [isVisible, comments]);
-
-    useEffect(() => {
         const options = {
             root: null,
             rootMargin: "0px",
@@ -331,6 +312,56 @@ const DenemelerMain = () => {
             if (observerRefVal.current) observer.unobserve(observerRefVal);
         };
     }, [postContainerRef]);
+
+    useEffect(() => {
+        console.log(isVisible);
+        let subscribed = true;
+        if (isVisible && !comments) {
+            const repliesQuery = `
+                "replies": replies[@->.approved==true]->{
+                   "replies": replies[@->.approved==true]->{
+                       "replies": replies[@->.approved==true]->{
+                           _id,                 
+                           name,
+                           _createdAt,
+                           comment,                      
+                           email,
+                           type,
+                        },   
+                       _id,                 
+                       name,
+                       _createdAt,
+                       comment,                      
+                       email,
+                       type,
+                      },
+                   _id,                 
+                   name,
+                   _createdAt,
+                   comment,                      
+                   email,
+                   type,
+                }`;
+
+            const commentsQuery = `*[_type == "comment" && post == "${denemeName}" && approved == true && !defined(parent)]
+                {
+                ...,
+                ${repliesQuery}
+            }`;
+
+            sanityClient
+                .fetch(commentsQuery)
+                .then((commentData) => {
+                    if (subscribed) {
+                        setComments(commentData);
+                    }
+                })
+                .catch(console.error);
+        }
+        return () => {
+            subscribed = false;
+        };
+    }, [isVisible, comments]);
 
     const desc =
         data && toPlainText(data[index].content).slice(0, 180).trim() + "...";
@@ -365,7 +396,7 @@ const DenemelerMain = () => {
             </div>
             <div ref={postContainerRef}>
                 <Suspense fallback={<h1>Loading Comments...</h1>}>
-                    <CommentSection comments={comments} post={denemeName} />
+                    <CommentSection comments={comments} postId={denemeName} />
                 </Suspense>
             </div>
         </div>

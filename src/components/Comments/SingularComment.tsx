@@ -68,7 +68,7 @@ export const SingularComment = ({
                             dark:hover:text-black"
                         onClick={() => toggleReplyForm(_id)}
                     >
-                        <span className="font-bold">Reply</span>
+                        <span className="font-bold">Yanıtla</span>
                     </button>
                     {isActive && <ReplyForm _id={_id} postId={postId} />}
                 </div>

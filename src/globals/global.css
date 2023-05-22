@@ -1,48 +1,74 @@
+@tailwind components;
+@tailwind utilities;
 .site-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 1725px) {
-  .site-container{max-width:65%}
+    .site-container {
+        max-width: 65%;
+    }
 }
 
 @media only screen and (max-width: 1530px) {
-
-  .site-container{max-width:61%}
+    .site-container {
+        max-width: 61%;
+    }
 }
 
 @media only screen and (max-width: 1365px) {
-  .site-container{max-width:1200px }
+    .site-container {
+        max-width: 1200px;
+    }
 }
 
 @media only screen and (max-width: 1220px) {
-  .site-container {
-    max-width: 900px;
-  }
+    .site-container {
+        max-width: 900px;
+    }
 }
 
 @media only screen and (max-width: 960px) {
-  .site-container {
-    max-width: unset;
-    width: 90%;
-    margin: 0 auto;
-  }
+    .site-container {
+        max-width: unset;
+        width: 90%;
+        margin: 0 auto;
+    }
 }
 
 @media only screen and (max-width: 960px) {
-  .site-container {
-    max-width: unset;
-    width: 96%;
-    margin: 0 auto;
-  }
+    .site-container {
+        max-width: unset;
+        width: 96%;
+        margin: 0 auto;
+    }
 }
 
 * {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a {
-  color: unset;
+    color: unset;
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    font-family: sans;
+}
+input {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    font-family: sans;
 }
