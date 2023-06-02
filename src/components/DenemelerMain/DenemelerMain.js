@@ -314,7 +314,6 @@ const DenemelerMain = () => {
     }, [postContainerRef]);
 
     useEffect(() => {
-        console.log(isVisible);
         let subscribed = true;
         if (isVisible && !comments) {
             const repliesQuery = `

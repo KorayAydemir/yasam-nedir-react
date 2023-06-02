@@ -47,10 +47,10 @@ export const CommentForm = ({ post }: any) => {
     const onSubmit = async (data: any) => {
         setIsSubmitting(true);
         setFormData(data);
-        console.log(data);
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_BACKEND_URL}/api/postComment`,
+                //`${process.env.REACT_APP_BACKEND_URL}/api/postComment`,
+                `https://yasam-nedir-backend.vercel.app`,
                 {
                     method: "POST",
                     body: JSON.stringify({ ...data }),
@@ -58,7 +58,6 @@ export const CommentForm = ({ post }: any) => {
             );
             setIsSubmitting(false);
             setHasSubmitted(true);
-            console.log(res);
         } catch (err) {
             setFormData(err);
         }

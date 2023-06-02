@@ -3,10 +3,8 @@ import sanityClient from "@sanity/client";
 console.log(window.location.href);
 let preview = false;
 if (window.location.href.includes("?preview=true")) {
-    console.log("it does");
     preview = true;
 } else {
-    console.log("no");
     preview = false;
 }
 export default sanityClient({

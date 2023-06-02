@@ -1295,20 +1295,22 @@ export const mySchemas = [
             {
                 name: "name",
                 type: "string",
+                title: "İsim",
                 validation: (Rule) =>
                     Rule.required()
                         .max(60)
                         .error("Name can't be longer than 60 characters."),
             },
             {
-                title: "Approved",
+                title: "Onay Durumu",
                 name: "approved",
                 type: "boolean",
-                description: "Comments won't show on the site without approval",
+                description: "Onaylanmayan yorumlar sitede gösterilmez.",
             },
             {
                 name: "email",
                 type: "string",
+                title: "E-Posta",
                 validation: (Rule) =>
                     Rule.required()
                         .max(254)
@@ -1319,6 +1321,7 @@ export const mySchemas = [
             {
                 name: "comment",
                 type: "text",
+                title: "Yorum",
                 validation: (Rule) =>
                     Rule.required()
                         .max(1024)
@@ -1332,7 +1335,7 @@ export const mySchemas = [
             {
                 name: "replies",
                 type: "array",
-                title: "Children",
+                title: "Yanıtlar",
                 of: [
                     {
                         type: "reference",
@@ -1344,7 +1347,7 @@ export const mySchemas = [
             },
             {
                 name: "parent",
-                title: "Parent Comment",
+                title: "Ait Olduğu Yorum",
                 type: "reference",
                 to: [{ type: "comment" }],
                 readOnly: true,
@@ -1355,10 +1358,11 @@ export const mySchemas = [
                 name: "name",
                 comment: "comment",
                 post: "post",
+                email: "email",
             },
-            prepare({ name, comment, post }) {
+            prepare({ name, comment, email }) {
                 return {
-                    title: `${name} on ${post}`,
+                    title: `${name} - ${email}`,
                     subtitle: comment,
                 };
             },
