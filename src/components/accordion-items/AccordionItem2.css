@@ -1,4 +1,4 @@
-.unset *:not(.latex *:not(.base)){
+.unset *:not(.latex *:not(.base), iframe){
     all:revert;
     line-height:2rem;
     margin:0;
