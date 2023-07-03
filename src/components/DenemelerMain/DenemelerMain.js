@@ -72,15 +72,14 @@ const DenemelerMain = () => {
                 const fullUrl = `https://www.youtube.com/embed/${id}`;
 
                 return (
-                    <div className="w-[100vw] latex flex align-center hidden">
                         <iframe
+                            className="aspect-video w-full"
                             title="YouTube Preview"
                             width="900"
                             height="515"
                             src={fullUrl}
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                         />
-                    </div>
                 );
             },
             latex: (props) => {
