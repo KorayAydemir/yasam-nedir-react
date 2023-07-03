@@ -50,7 +50,7 @@ export const CommentForm = ({ post }: any) => {
         try {
             const res = await fetch(
                 //`${process.env.REACT_APP_BACKEND_URL}/api/postComment`,
-                `https://yasam-nedir-backend.vercel.app`,
+                `https://yasam-nedir-backend.vercel.app/api/postComment`,
                 {
                     method: "POST",
                     body: JSON.stringify({ ...data }),

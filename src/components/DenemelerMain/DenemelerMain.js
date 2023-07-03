@@ -2,11 +2,8 @@ import classes from "./DenemelerMain.module.css";
 import { useOutletContext, useParams } from "react-router-dom";
 import getYouTubeID from "get-youtube-id";
 import {
-    useCallback,
     useContext,
     useEffect,
-    useLayoutEffect,
-    useMemo,
     useState,
 } from "react";
 import sanityClient from "../../Client";
@@ -14,8 +11,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import { TooltipContext } from "../TooltipContext";
 import { Helmet } from "react-helmet";
-import { lazy, Suspense } from "react";
-import { useRef } from "react";
+import { lazy, } from "react";
 const CommentSection = lazy(() => import("../CommentSection/CommentSection"));
 
 const DenemelerMain = () => {
@@ -82,6 +78,14 @@ const DenemelerMain = () => {
 
                 return (
                     <div className="w-[100vw]">
+                            <iframe
+            title="YouTube Preview"
+            width="100%"
+            height="315"
+            src={fullUrl}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        />
+
 </div>
                 );
             },

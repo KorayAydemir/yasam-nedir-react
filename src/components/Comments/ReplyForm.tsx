@@ -48,7 +48,7 @@ export const ReplyForm = ({ _id, postId }: { _id: string; postId: string }) => {
         setFormData(data);
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_BACKEND_URL}/api/postReply`,
+                `https://yasam-nedir-backend.vercel.app/api/postReply`,
                 {
                     method: "POST",
                     body: JSON.stringify({ ...data, parentId: _id, postId }),
