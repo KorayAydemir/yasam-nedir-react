@@ -7,22 +7,32 @@ import { PortableText } from "@portabletext/react";
 import { TooltipContext } from "../TooltipContext";
 import { Helmet } from "react-helmet";
 import CommentSection from "../CommentSection/CommentSection";
+import getYouTubeID from "get-youtube-id";
 
 const EvrimMain = () => {
-    const postContainerRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
-
     const tooltips = useContext(TooltipContext);
     var Latex = require("react-latex");
     const { evrimName } = useParams();
     const { setTitle } = useOutletContext();
     const [data, setData] = useState(null);
-    const [comments, setComments] = useState(null);
     const builder = imageUrlBuilder(sanityClient);
-    const index = evrimName[0] - 1;
+
+    let index = evrimName[0] - 1;
+
+    if (hasNumber(evrimName[1])) {
+        index = evrimName.slice(0, 2) - 1;
+    } else {
+        index = evrimName[0] - 1;
+    }
+
+    function hasNumber(myString) {
+        return /\d/.test(myString);
+    }
+
     function urlFor(source) {
         return builder.image(source);
     }
+
     useEffect(() => {
         let subscribed = true;
         sanityClient
@@ -54,6 +64,22 @@ const EvrimMain = () => {
             );
         },
         types: {
+            youtubeEmbed: ({ value }) => {
+                const url = value.url;
+                const id = getYouTubeID(url);
+                const fullUrl = `https://www.youtube.com/embed/${id}`;
+
+                return (
+                        <iframe
+                            className="aspect-video w-full"
+                            title="YouTube Preview"
+                            width="900"
+                            height="515"
+                            src={fullUrl}
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        />
+                );
+            },
             latex: (props) => {
                 const sep = (
                     <div
@@ -248,77 +274,6 @@ const EvrimMain = () => {
         }
     }
 
-    useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: [0, 1],
-        };
-        const handleIntersection = (entries) => {
-            const [entry] = entries;
-            setIsVisible(entry.isIntersecting);
-        };
-
-        let observerRefVal = null;
-        const observer = new IntersectionObserver(handleIntersection, options);
-
-        if (postContainerRef.current)
-            observer.observe(postContainerRef.current);
-        observerRefVal = postContainerRef.current;
-        return () => {
-            if (observerRefVal.current) observer.unobserve(observerRefVal);
-        };
-    }, [postContainerRef]);
-
-    useEffect(() => {
-        let subscribed = true;
-        if (isVisible && !comments) {
-            const repliesQuery = `
-                "replies": replies[@->.approved==true]->{
-                   "replies": replies[@->.approved==true]->{
-                       "replies": replies[@->.approved==true]->{
-                           _id,                 
-                           name,
-                           _createdAt,
-                           comment,                      
-                           email,
-                           type,
-                        },   
-                       _id,                 
-                       name,
-                       _createdAt,
-                       comment,                      
-                       email,
-                       type,
-                      },
-                   _id,                 
-                   name,
-                   _createdAt,
-                   comment,                      
-                   email,
-                   type,
-                }`;
-
-            const commentsQuery = `*[_type == "comment" && post == "${evrimName}" && approved == true && !defined(parent)]
-                {
-                ...,
-                ${repliesQuery}
-            }`;
-
-            sanityClient
-                .fetch(commentsQuery)
-                .then((commentData) => {
-                    if (subscribed) {
-                        setComments(commentData);
-                    }
-                })
-                .catch(console.error);
-        }
-        return () => {
-            subscribed = false;
-        };
-    }, [isVisible, comments]);
-
     return (
         <div className="site-container">
             <Helmet>
@@ -340,11 +295,8 @@ const EvrimMain = () => {
                 </div>
             </div>
 
-            <div ref={postContainerRef}>
-                <Suspense fallback={<h1>Loading Comments...</h1>}>
-                    <CommentSection comments={comments} postId={evrimName} />
-                </Suspense>
-            </div>
+        {<CommentSection denemeName={evrimName}/>}
+
         </div>
     );
 };

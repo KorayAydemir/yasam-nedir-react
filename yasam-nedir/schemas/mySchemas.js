@@ -215,6 +215,11 @@ export const mySchemas = [
                         title: "Sunum",
                     },
                     {
+                        name: "youtubeEmbed",
+                        type: "youtube",
+                        title: "Youtube Gömülü",
+                    },
+                    {
                         type: "latex",
                         icon: mathInlineIcon,
                         title: "Inline math",
@@ -807,6 +812,11 @@ export const mySchemas = [
                         type: "textAlignment",
                         name: "textAlignment",
                         title: "Sunum",
+                    },
+                    {
+                        name: "youtubeEmbed",
+                        type: "youtube",
+                        title: "Youtube Gömülü",
                     },
                     {
                         type: "latex",
