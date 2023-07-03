@@ -1,6 +1,6 @@
 import sanityClient from "@sanity/client";
 
-console.log(window.location.href);
+//console.log(window.location.href);
 let preview = false;
 if (window.location.href.includes("?preview=true")) {
     preview = true;

@@ -56,6 +56,7 @@ export const CommentForm = ({ post }: any) => {
                     body: JSON.stringify({ ...data }),
                 }
             );
+            console.log(res.headers)
             setIsSubmitting(false);
             setHasSubmitted(true);
         } catch (err) {

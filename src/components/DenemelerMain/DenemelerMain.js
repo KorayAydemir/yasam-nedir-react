@@ -1,5 +1,6 @@
 import classes from "./DenemelerMain.module.css";
 import { useOutletContext, useParams } from "react-router-dom";
+import getYouTubeID from "get-youtube-id";
 import {
     useCallback,
     useContext,
@@ -18,15 +19,12 @@ import { useRef } from "react";
 const CommentSection = lazy(() => import("../CommentSection/CommentSection"));
 
 const DenemelerMain = () => {
-    const postContainerRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
 
     const tooltips = useContext(TooltipContext);
     var Latex = require("react-latex");
     const { denemeName } = useParams();
     const { setTitle } = useOutletContext();
     const [data, setData] = useState(null);
-    const [comments, setComments] = useState(null);
     const builder = imageUrlBuilder(sanityClient);
     //const [index, setIndex] = useState(0);
     let index = denemeName[0] - 1;
@@ -68,7 +66,6 @@ const DenemelerMain = () => {
         block: (props) => {
             return (
                 <>
-                    {" "}
                     <p
                         className="seperator"
                         style={{ marginTop: "20px", display: "block" }}
@@ -78,6 +75,16 @@ const DenemelerMain = () => {
             );
         },
         types: {
+            youtubeEmbed: ({ value }) => {
+                const url = value.url;
+                const id = getYouTubeID(url);
+                const fullUrl = `https://www.youtube.com/embed/${id}`;
+
+                return (
+                    <div className="w-[100vw]">
+</div>
+                );
+            },
             latex: (props) => {
                 const sep = (
                     <div
@@ -291,76 +298,7 @@ const DenemelerMain = () => {
         );
     }
 
-    useEffect(() => {
-        const options = {
-            root: null,
-            rootMargin: "0px",
-            threshold: [0, 1],
-        };
-        const handleIntersection = (entries) => {
-            const [entry] = entries;
-            setIsVisible(entry.isIntersecting);
-        };
 
-        let observerRefVal = null;
-        const observer = new IntersectionObserver(handleIntersection, options);
-
-        if (postContainerRef.current)
-            observer.observe(postContainerRef.current);
-        observerRefVal = postContainerRef.current;
-        return () => {
-            if (observerRefVal.current) observer.unobserve(observerRefVal);
-        };
-    }, [postContainerRef]);
-
-    useEffect(() => {
-        let subscribed = true;
-        if (isVisible && !comments) {
-            const repliesQuery = `
-                "replies": replies[@->.approved==true]->{
-                   "replies": replies[@->.approved==true]->{
-                       "replies": replies[@->.approved==true]->{
-                           _id,                 
-                           name,
-                           _createdAt,
-                           comment,                      
-                           email,
-                           type,
-                        },   
-                       _id,                 
-                       name,
-                       _createdAt,
-                       comment,                      
-                       email,
-                       type,
-                      },
-                   _id,                 
-                   name,
-                   _createdAt,
-                   comment,                      
-                   email,
-                   type,
-                }`;
-
-            const commentsQuery = `*[_type == "comment" && post == "${denemeName}" && approved == true && !defined(parent)]
-                {
-                ...,
-                ${repliesQuery}
-            }`;
-
-            sanityClient
-                .fetch(commentsQuery)
-                .then((commentData) => {
-                    if (subscribed) {
-                        setComments(commentData);
-                    }
-                })
-                .catch(console.error);
-        }
-        return () => {
-            subscribed = false;
-        };
-    }, [isVisible, comments]);
 
     const desc =
         data && toPlainText(data[index].content).slice(0, 180).trim() + "...";
@@ -393,11 +331,7 @@ const DenemelerMain = () => {
                     </div>
                 </div>
             </div>
-            <div ref={postContainerRef}>
-                <Suspense fallback={<h1>Loading Comments...</h1>}>
-                    <CommentSection comments={comments} postId={denemeName} />
-                </Suspense>
-            </div>
+        {<CommentSection denemeName={denemeName}/>}
         </div>
     );
 };

@@ -1,6 +1,29 @@
 import React from "react";
 import AlignBlock from "./components/AlignBlock";
 
+import getYouTubeId from "get-youtube-id";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
+const Preview = (props) => {
+    const { value } = props;
+    const id = getYouTubeId(value.url);
+    const url = `https://www.youtube.com/embed/${id}`;
+    if (!id) {
+        return <div>Missing YouTube URL</div>;
+    }
+    return (
+        <iframe
+            title="YouTube Preview"
+            width="100%"
+            height="315"
+            src={url}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        />
+    );
+};
+
 const fonts = [
     { title: "Literata", value: "Literata" },
     {
@@ -618,6 +641,11 @@ export const mySchemas = [
                         type: "textAlignment",
                         name: "textAlignment",
                         title: "Sunum",
+                    },
+                    {
+                        name: "youtubeEmbed",
+                        type: "youtube",
+                        title: "Youtube Gömülü",
                     },
                     {
                         type: "latex",
@@ -1366,6 +1394,24 @@ export const mySchemas = [
                     subtitle: comment,
                 };
             },
+        },
+    },
+    {
+        name: "youtube",
+        type: "object",
+        title: "Youtube Gömülü Video",
+        fields: [
+            {
+                name: "url",
+                type: "url",
+                title: "YouTube Video Bağlantısı",
+            },
+        ],
+        preview: {
+            select: {
+                url: "url",
+            },
+            component: Preview,
         },
     },
 ];

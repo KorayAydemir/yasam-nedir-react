@@ -24,9 +24,11 @@
     "@sanity/production-preview": "^2.29.3",
     "@sanity/vision": "^2.30.5",
     "eslint": "^8.6.0",
+    "get-youtube-id": "^1.0.1",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
+    "react-lite-youtube-embed": "^2.3.52",
     "sanity-plugin-iframe-pane": "^1.1.1",
     "sanity-plugin-latex-input": "github:KorayAydemir/latex-input",
     "styled-components": "^5.2.0"
