@@ -81,12 +81,10 @@ const CommentSection = (props) => {
     }, [postContainerRef]);
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
         <div ref={postContainerRef}>
                 <Comments comments={comments} postId={props.denemeName} />
                 <CommentForm post={props.denemeName} />
         </div>
-        </Suspense>
     );
 };
 export default CommentSection;

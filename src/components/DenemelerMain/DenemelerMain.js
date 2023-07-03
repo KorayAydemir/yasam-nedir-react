@@ -1,21 +1,16 @@
 import classes from "./DenemelerMain.module.css";
 import { useOutletContext, useParams } from "react-router-dom";
 import getYouTubeID from "get-youtube-id";
-import {
-    useContext,
-    useEffect,
-    useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 import sanityClient from "../../Client";
 import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import { TooltipContext } from "../TooltipContext";
 import { Helmet } from "react-helmet";
-import { lazy, } from "react";
-const CommentSection = lazy(() => import("../CommentSection/CommentSection"));
+import { lazy } from "react";
+import CommentSection from "../CommentSection/CommentSection";
 
 const DenemelerMain = () => {
-
     const tooltips = useContext(TooltipContext);
     var Latex = require("react-latex");
     const { denemeName } = useParams();
@@ -77,16 +72,15 @@ const DenemelerMain = () => {
                 const fullUrl = `https://www.youtube.com/embed/${id}`;
 
                 return (
-                    <div className="w-[100vw]">
-                            <iframe
-            title="YouTube Preview"
-            width="100%"
-            height="315"
-            src={fullUrl}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        />
-
-</div>
+                    <div className="w-[100vw] latex flex align-center hidden">
+                        <iframe
+                            title="YouTube Preview"
+                            width="900"
+                            height="515"
+                            src={fullUrl}
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        />
+                    </div>
                 );
             },
             latex: (props) => {
@@ -302,8 +296,6 @@ const DenemelerMain = () => {
         );
     }
 
-
-
     const desc =
         data && toPlainText(data[index].content).slice(0, 180).trim() + "...";
     return (
@@ -335,7 +327,7 @@ const DenemelerMain = () => {
                     </div>
                 </div>
             </div>
-        {<CommentSection denemeName={denemeName}/>}
+            {<CommentSection denemeName={denemeName} />}
         </div>
     );
 };
