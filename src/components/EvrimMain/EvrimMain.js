@@ -36,15 +36,16 @@ const EvrimMain = () => {
     useEffect(() => {
         let subscribed = true;
         sanityClient
-            .fetch(`*[_type == "evrim"]{content, title}`)
+            .fetch(`*[_type == "evrim"]{content, title, index}`)
             .then((data) => {
                 if (subscribed) {
-                    setData(data.sort((a, b) => a.index - b.index));
-                    console.log("evrim");
+                    console.log("evrimunsorted", data)
+                    let sortedData = data.sort((a, b) => a.index - b.index)
+                    setData(sortedData);
+                    console.log('evrimmaindata',sortedData)
                 }
             })
             .catch(console.error);
-        console.log("evrim out");
         return () => {
             subscribed = false;
         };
@@ -54,12 +55,11 @@ const EvrimMain = () => {
         block: (props) => {
             return (
                 <>
-                    {" "}
                     <p
                         className="seperator"
                         style={{ marginTop: "20px", display: "block" }}
-                    ></p>{" "}
-                    <p style={{ display: "inline" }}> {props.children} </p>{" "}
+                    ></p>
+                    <p style={{ display: "inline" }}> {props.children} </p>
                 </>
             );
         },

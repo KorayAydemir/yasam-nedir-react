@@ -20,11 +20,9 @@ const Evrim = () => {
       .then((data) => {
         if (subscribed) {
           setData(data)
-          console.log("evrim");
         }
       })
       .catch(console.error);
-    console.log("evrim out");
     return () => {
       subscribed = false;
     };
@@ -32,6 +30,7 @@ const Evrim = () => {
   useState(() => {
     setTitle("EVRİM KURAMI");
   }, []);
+    console.log('datafromevrim,',data)
   const content = data && data?.sort((a, b) => a.index - b.index)?.map((a) => <Birim key={a.title} notNumbered={true} icon={a.evrim_icon && urlFor(a.evrim_icon)}>{a.index + ": " + a.title}</Birim>)
   return (
     <div className="site-container">
@@ -40,6 +39,6 @@ const Evrim = () => {
       </section>
     </div>
   )
-  //<div style={{ textAlign: "center", fontWeight: "bold", marginTop: "10px", fontSize: "20px" }}>Bu sayfa henüz hazır değil!</div>;
 };
+
 export default Evrim;

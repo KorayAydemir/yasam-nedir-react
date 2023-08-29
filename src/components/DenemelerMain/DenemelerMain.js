@@ -7,7 +7,6 @@ import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from "@portabletext/react";
 import { TooltipContext } from "../TooltipContext";
 import { Helmet } from "react-helmet";
-import { lazy } from "react";
 import CommentSection from "../CommentSection/CommentSection";
 
 const DenemelerMain = () => {
@@ -17,7 +16,7 @@ const DenemelerMain = () => {
     const { setTitle } = useOutletContext();
     const [data, setData] = useState(null);
     const builder = imageUrlBuilder(sanityClient);
-    //const [index, setIndex] = useState(0);
+
     let index = denemeName[0] - 1;
 
     if (hasNumber(denemeName[1])) {
@@ -42,7 +41,10 @@ const DenemelerMain = () => {
             )
             .then((data) => {
                 if (subscribed) {
-                    setData(data.denemeler.sort((a, b) => a.index - b.index));
+                    console.log("denemeunsorted", data)
+                    let sortedData = data.denemeler.sort((a, b) => a.index - b.index)
+                    setData(sortedData);
+                    console.log("denememaindata", sortedData)
                 }
             })
             .catch(console.error);

@@ -28,19 +28,13 @@ const Denemeler = () => {
             .then((data) => {
                 if (subscribed) {
                     setData(data);
-                    console.log("denemeler");
                 }
             })
             .catch(console.error);
-        console.log("denemleer out");
         return () => {
             subscribed = false;
         };
     }, []);
-
-
-
-    console.log(data)
 
     const content = data?.sort((a, b) => a.index - b.index)?.map((a) => (
         <Birim notNumbered={true}

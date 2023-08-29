@@ -58,7 +58,6 @@ Yaşam nedir? Kimse bilmez, ancak yaşamın ne olduğunu sorgulamadığımız he
               element={<Sections />}
             />
             <Route path="/evrim" element={<Evrim />} />
-            {/*tomorrow try ot add route evrim into evrim mains element={} so it fetches when entered evrim instead of fetching on every new evrimMain route */}
             <Route
               path="/evrim/:evrimName"
               element={
